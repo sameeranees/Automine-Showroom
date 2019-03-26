@@ -25,7 +25,14 @@ namespace Software_Engineering
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.css",
-                      "~/Content/site.css"));
+                      "~/Content/site.css",
+                      "~/admin-lte/css/AdminLTE.css",
+                      "~/admin-lte/css/skins/skin-blue.css",
+                      "~/admin-lte/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css"));
+            bundles.Add(new ScriptBundle("~/admin-lte/js").Include(
+             "~/admin-lte/js/app.js",
+             "~/admin-lte/plugins/fastclick/fastclick.js",
+             "~/admin-lte/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.all.min.js"));
         }
     }
 }
