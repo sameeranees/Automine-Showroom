@@ -13,9 +13,9 @@ scratch. This page gets rid of all links and provides the needed markup only.
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
     <!-- Font Awesome -->
-    <link rel="stylesheet" href="@Url.Content("~/Content/bower_components/font-awesome/css/font-awesome.min.css")">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <!-- Ionicons -->
-    <link rel="stylesheet" href=""@Url.Content("~/Content/bower_components/Ionicons/css/ionicons.min.css")">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css">
     <!-- Theme style
     <link rel="stylesheet" href="dist/css/AdminLTE.min.css">-->
     <!-- AdminLTE Skins. We have chosen the skin-blue for this starter
@@ -264,18 +264,18 @@ desired effect
                     <li class="active">@Html.ActionLink("Home", "Index", "Home")</li>
                     <li>@Html.ActionLink("About", "About", "Home")</li>
                     <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
-                    <li class="active"><a href="#"><i class="fa fa-link"></i> <span>Link</span></a></li>
-                    <li><a href="#"><i class="fa fa-link"></i> <span>Another Link</span></a></li>
+                    <li><a href="#"><i class="fa-plus-square-o"></i> <span>Link</span></a></li>
+                    <li><a href="#"><i class="fa-plus-square-o"></i> <span>Customers</span></a></li>
                     <li class="treeview">
-                        <a href="#">
-                            <i class="fa fa-link"></i> <span>Multilevel</span>
+                        <a href="#"><i class="fa-plus-square-o"></i> <span>Cars</span>
                             <span class="pull-right-container">
                                 <i class="fa fa-angle-left pull-right"></i>
                             </span>
                         </a>
                         <ul class="treeview-menu">
-                            <li><a href="#">Link in level 2</a></li>
-                            <li><a href="#">Link in level 2</a></li>
+                            <li><a href="#">Buy</a></li>
+                            <li><a href="#">Sell</a></li>
+                            <li><a href="#">Reports</a></li>
                         </ul>
                     </li>
                 </ul>
@@ -408,7 +408,8 @@ desired effect
          user experience. -->
     <script>
      //bootstrap WYSIHTML5 - text editor
-     $(".textarea").wysihtml5();
+        $(".textarea").wysihtml5();
     </script>
+
 </body>
 </html>

@@ -28,11 +28,23 @@ namespace Software_Engineering
                       "~/Content/site.css",
                       "~/admin-lte/css/AdminLTE.css",
                       "~/admin-lte/css/skins/skin-blue.css",
-                      "~/admin-lte/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css"));
+                      "~/admin-lte/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css",
+                      "~/admin-lte/plugins/iCheck/all.css",
+                      "~/admin-lte/plugins/timepicker/bootstrap-timepicker.min.css",
+                      "~/admin-lte/plugins/bootstrap-slider/slider.css"
+                      ));
             bundles.Add(new ScriptBundle("~/admin-lte/js").Include(
-             "~/admin-lte/js/app.js",
+             "~/admin-lte/js/adminlte.js",
              "~/admin-lte/plugins/fastclick/fastclick.js",
-             "~/admin-lte/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.all.min.js"));
+             "~/admin-lte/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.all.min.js",
+             "~/admin-lte/plugins/iCheck/icheck.min.js",
+             "~/admin-lte/plugins/timepicker/bootstrap-timepicker.min.js",
+             "~/admin-lte/plugins/bootstrap-slider/bootstrap-slider.js",
+             "~/admin-lte/plugins/input-mask/jquery.inputmask.js",
+             "~/admin-lte/plugins/input-mask/jquery.inputmask.date.extensions.js",
+             "~/admin-lte/plugins/input-mask/jquery.inputmask.extensions.js",
+             "~/admin-lte/plugins/jQueryUI/jquery-ui.js"
+             ));
         }
     }
 }
