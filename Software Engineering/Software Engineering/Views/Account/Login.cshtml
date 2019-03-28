@@ -2,14 +2,14 @@
     Layout = null;
 }
 @using Software_Engineering.Models
-@model LoginViewModel
-@{
-    ViewBag.Title = "Log in";
-}
 @Styles.Render("~/Content/other.css")
 @Styles.Render("~/Content/other 2.css")
 @Styles.Render("~/Content/other 3.css")
 @Scripts.Render("~/bundles/modernizr")
+@model LoginViewModel
+@{
+    ViewBag.Title = "Log in";
+}
 <body>
     <div class="navbar navbar-inverse navbar-fixed-top">
         <div class="container">
@@ -19,7 +19,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                @Html.ActionLink("AUTOMINE", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+                <b class="navbar-brand" style="text-align:center">AUTOMINE</b>
             </div>
         </div>
     </div>
@@ -62,19 +62,11 @@
                         <input type="submit" value="Log in" class="btn btn-default" />
                     </div>
                 </div>
-                <p>
-                    @Html.ActionLink("Register as a new user", "Register")
-                </p>
                 @* Enable this once you have account confirmation enabled for password reset functionality
                     <p>
                         @Html.ActionLink("Forgot your password?", "ForgotPassword")
                     </p>*@
             }
-        </section>
-    </div>
-    <div class="col-md-4">
-        <section id="socialLoginForm">
-            @Html.Partial("_ExternalLoginsListPartial", new ExternalLoginListViewModel { ReturnUrl = ViewBag.ReturnUrl })
         </section>
     </div>
 </div>

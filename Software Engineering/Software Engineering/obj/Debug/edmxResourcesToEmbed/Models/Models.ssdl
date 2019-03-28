@@ -1,0 +1,106 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="Software_EngineeringModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Cars">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="Model" Type="nchar" MaxLength="15" Nullable="false" />
+    <Property Name="Make" Type="nchar" MaxLength="15" Nullable="false" />
+    <Property Name="Mileage" Type="int" />
+    <Property Name="Year" Type="int" />
+    <Property Name="CC" Type="nchar" MaxLength="5" />
+    <Property Name="buyingPrice" Type="bigint" Nullable="false" />
+    <Property Name="sellingPrice" Type="bigint" />
+    <Property Name="maintainanceCost" Type="bigint" />
+    <Property Name="Condition" Type="nchar" MaxLength="20" />
+    <Property Name="Imported" Type="bit" Nullable="false" />
+    <Property Name="ownerName" Type="nchar" MaxLength="30" Nullable="false" />
+    <Property Name="purchasedDate" Type="date" Nullable="false" />
+    <Property Name="soldDate" Type="date" />
+    <Property Name="registerationNo" Type="nchar" MaxLength="10" />
+    <Property Name="customerId" Type="int" />
+    <Property Name="trackerId" Type="int" />
+    <Property Name="insuranceId" Type="int" />
+  </EntityType>
+  <EntityType Name="Customers">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" Nullable="false" />
+    <Property Name="Name" Type="nchar" MaxLength="40" Nullable="false" />
+    <Property Name="Cnic" Type="nchar" MaxLength="13" Nullable="false" />
+    <Property Name="phoneNumber" Type="nchar" MaxLength="14" Nullable="false" />
+    <Property Name="Address" Type="nchar" MaxLength="60" />
+  </EntityType>
+  <EntityType Name="Insurance">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" Nullable="false" />
+    <Property Name="Company" Type="nchar" MaxLength="20" Nullable="false" />
+    <Property Name="Package" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Tracker">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" Nullable="false" />
+    <Property Name="Company" Type="nchar" MaxLength="20" Nullable="false" />
+    <Property Name="Package" Type="int" Nullable="false" />
+  </EntityType>
+  <Association Name="FK_Cars_ToCustomers">
+    <End Role="Customers" Type="Self.Customers" Multiplicity="0..1" />
+    <End Role="Cars" Type="Self.Cars" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Customers">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Cars">
+        <PropertyRef Name="customerId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Cars_ToInsurance">
+    <End Role="Insurance" Type="Self.Insurance" Multiplicity="0..1" />
+    <End Role="Cars" Type="Self.Cars" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Insurance">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Cars">
+        <PropertyRef Name="insuranceId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Cars_ToTracker">
+    <End Role="Tracker" Type="Self.Tracker" Multiplicity="0..1" />
+    <End Role="Cars" Type="Self.Cars" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Tracker">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Cars">
+        <PropertyRef Name="trackerId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="Software_EngineeringModelStoreContainer">
+    <EntitySet Name="Cars" EntityType="Self.Cars" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Customers" EntityType="Self.Customers" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Insurance" EntityType="Self.Insurance" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Tracker" EntityType="Self.Tracker" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_Cars_ToCustomers" Association="Self.FK_Cars_ToCustomers">
+      <End Role="Customers" EntitySet="Customers" />
+      <End Role="Cars" EntitySet="Cars" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Cars_ToInsurance" Association="Self.FK_Cars_ToInsurance">
+      <End Role="Insurance" EntitySet="Insurance" />
+      <End Role="Cars" EntitySet="Cars" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Cars_ToTracker" Association="Self.FK_Cars_ToTracker">
+      <End Role="Tracker" EntitySet="Tracker" />
+      <End Role="Cars" EntitySet="Cars" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

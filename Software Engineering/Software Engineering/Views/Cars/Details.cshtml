@@ -1,0 +1,160 @@
+﻿@model Software_Engineering.Models.Car
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div class="row">
+    <div class="col-xs-12">
+        <div class="box">
+            <div class="box-header">
+                <h3 class="box-title">Car Details</h3>
+            </div>
+            <!-- /.box-header -->
+            <div class="box-body">
+                    <dl class="dl-horizontal">
+                        <dt>
+                            @Html.DisplayNameFor(model => model.Model)
+                        </dt>
+
+                        <dd>
+                            @Html.DisplayFor(model => model.Model)
+                        </dd>
+
+                        <dt>
+                            @Html.DisplayNameFor(model => model.Make)
+                        </dt>
+
+                        <dd>
+                            @Html.DisplayFor(model => model.Make)
+                        </dd>
+
+                        <dt>
+                            @Html.DisplayNameFor(model => model.Mileage)
+                        </dt>
+
+                        <dd>
+                            @Html.DisplayFor(model => model.Mileage)
+                        </dd>
+
+                        <dt>
+                            @Html.DisplayNameFor(model => model.Year)
+                        </dt>
+
+                        <dd>
+                            @Html.DisplayFor(model => model.Year)
+                        </dd>
+
+                        <dt>
+                            @Html.DisplayNameFor(model => model.CC)
+                        </dt>
+
+                        <dd>
+                            @Html.DisplayFor(model => model.CC)
+                        </dd>
+
+                        <dt>
+                            @Html.DisplayNameFor(model => model.buyingPrice)
+                        </dt>
+
+                        <dd>
+                            @Html.DisplayFor(model => model.buyingPrice)
+                        </dd>
+
+                        <dt>
+                            @Html.DisplayNameFor(model => model.sellingPrice)
+                        </dt>
+
+                        <dd>
+                            @Html.DisplayFor(model => model.sellingPrice)
+                        </dd>
+
+                        <dt>
+                            @Html.DisplayNameFor(model => model.maintainanceCost)
+                        </dt>
+
+                        <dd>
+                            @Html.DisplayFor(model => model.maintainanceCost)
+                        </dd>
+
+                        <dt>
+                            @Html.DisplayNameFor(model => model.Condition)
+                        </dt>
+
+                        <dd>
+                            @Html.DisplayFor(model => model.Condition)
+                        </dd>
+
+                        <dt>
+                            @Html.DisplayNameFor(model => model.Imported)
+                        </dt>
+
+                        <dd>
+                            @Html.DisplayFor(model => model.Imported)
+                        </dd>
+
+                        <dt>
+                            @Html.DisplayNameFor(model => model.ownerName)
+                        </dt>
+
+                        <dd>
+                            @Html.DisplayFor(model => model.ownerName)
+                        </dd>
+
+                        <dt>
+                            @Html.DisplayNameFor(model => model.purchasedDate)
+                        </dt>
+
+                        <dd>
+                            @Html.DisplayFor(model => model.purchasedDate)
+                        </dd>
+
+                        <dt>
+                            @Html.DisplayNameFor(model => model.soldDate)
+                        </dt>
+
+                        <dd>
+                            @Html.DisplayFor(model => model.soldDate)
+                        </dd>
+
+                        <dt>
+                            @Html.DisplayNameFor(model => model.registerationNo)
+                        </dt>
+
+                        <dd>
+                            @Html.DisplayFor(model => model.registerationNo)
+                        </dd>
+
+                        <dt>
+                            @Html.DisplayNameFor(model => model.Customer.Name)
+                        </dt>
+
+                        <dd>
+                            @Html.DisplayFor(model => model.Customer.Name)
+                        </dd>
+
+                        <dt>
+                            @Html.DisplayNameFor(model => model.Insurance.Company)
+                        </dt>
+
+                        <dd>
+                            @Html.DisplayFor(model => model.Insurance.Company)
+                        </dd>
+
+                        <dt>
+                            @Html.DisplayNameFor(model => model.Tracker.Company)
+                        </dt>
+
+                        <dd>
+                            @Html.DisplayFor(model => model.Tracker.Company)
+                        </dd>
+
+                    </dl>
+                </div>
+                <p>
+                    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+                    @Html.ActionLink("Back to List", "Index")
+                </p>
+            </div>
+        </div>
+    </div>

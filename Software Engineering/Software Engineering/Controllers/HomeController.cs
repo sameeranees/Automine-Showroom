@@ -8,6 +8,7 @@ namespace Software_Engineering.Controllers
 {
     public class HomeController : Controller
     {
+        [Authorize(Roles ="Admin,Finance Manager, Manager")]
         public ActionResult Index()
         {
             return View();
