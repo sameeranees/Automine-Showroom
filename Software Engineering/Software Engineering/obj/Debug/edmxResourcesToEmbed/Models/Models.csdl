@@ -30,7 +30,7 @@
     <Key>
       <PropertyRef Name="Id" />
     </Key>
-    <Property Name="Id" Type="Int32" Nullable="false" />
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="Name" Type="String" MaxLength="40" FixedLength="true" Unicode="true" Nullable="false" />
     <Property Name="Cnic" Type="String" MaxLength="13" FixedLength="true" Unicode="true" Nullable="false" />
     <Property Name="phoneNumber" Type="String" MaxLength="14" FixedLength="true" Unicode="true" Nullable="false" />
@@ -41,7 +41,7 @@
     <Key>
       <PropertyRef Name="Id" />
     </Key>
-    <Property Name="Id" Type="Int32" Nullable="false" />
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="Company" Type="String" MaxLength="20" FixedLength="true" Unicode="true" Nullable="false" />
     <Property Name="Package" Type="Int32" Nullable="false" />
     <NavigationProperty Name="Cars" Relationship="Self.FK_Cars_ToInsurance" FromRole="Insurance" ToRole="Cars" />
@@ -50,7 +50,7 @@
     <Key>
       <PropertyRef Name="Id" />
     </Key>
-    <Property Name="Id" Type="Int32" Nullable="false" />
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="Company" Type="String" MaxLength="20" FixedLength="true" Unicode="true" Nullable="false" />
     <Property Name="Package" Type="Int32" Nullable="false" />
     <NavigationProperty Name="Cars" Relationship="Self.FK_Cars_ToTracker" FromRole="Tracker" ToRole="Cars" />

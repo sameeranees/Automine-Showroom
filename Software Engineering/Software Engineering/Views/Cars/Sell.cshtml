@@ -198,6 +198,9 @@
                                 <th>
                                     Tracker
                                 </th>
+                                <th>
+
+                                </th>
                             </tr>
                     </thead>
                     <tbody>
@@ -254,6 +257,9 @@
                                 </td>
                                 <td>
                                     @Html.DisplayFor(modelItem => item.Tracker.Company)
+                                </td>
+                                <td>
+                                    @Html.ActionLink("Details", "Details", new { id = item.Id })
                                 </td>
                             </tr>
                         }

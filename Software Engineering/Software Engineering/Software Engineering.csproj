@@ -439,14 +439,23 @@
     <Content Include="Views\Cars\Delete.cshtml" />
     <Content Include="Views\Cars\Sell.cshtml" />
     <Content Include="Views\Cars\SellCar.cshtml" />
+    <Content Include="Views\Customer\Index.cshtml" />
+    <Content Include="Views\Customer\Create.cshtml" />
+    <Content Include="Views\Customer\Details.cshtml" />
+    <Content Include="Views\Customer\Edit.cshtml" />
+    <Content Include="Views\Insurance\Index.cshtml" />
+    <Content Include="Views\Insurance\Details.cshtml" />
+    <Content Include="Views\Insurance\Edit.cshtml" />
+    <Content Include="Views\Insurance\Create.cshtml" />
+    <Content Include="Views\Tracker\Index.cshtml" />
+    <Content Include="Views\Tracker\Details.cshtml" />
+    <Content Include="Views\Tracker\Create.cshtml" />
+    <Content Include="Views\Tracker\Edit.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="admin-lte\plugins\" />
     <Folder Include="Content\bower_components\" />
     <Folder Include="Content\dist\" />
-    <Folder Include="Views\Customer\" />
-    <Folder Include="Views\Insurance\" />
-    <Folder Include="Views\Tracker\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />

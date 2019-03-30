@@ -6,6 +6,7 @@ using System.Web.Mvc;
 using Software_Engineering.Models;
 using System.Net;
 using System.Data.Entity;
+using System.Data.Entity.Validation;
 
 namespace Software_Engineering.Controllers
 {
@@ -53,16 +54,16 @@ namespace Software_Engineering.Controllers
         // GET: Cars/Create
         public ActionResult Create()
         {
-            ViewBag.Customer_customerId = new SelectList(db.Customers, "customerId", "Name");
-            ViewBag.Tracker_trackerId= new SelectList(db.Trackers,"trackerId","Company");
-            ViewBag.Insurance_insuranceId = new SelectList(db.Insurances, "insuranceId", "Company");
+            ViewBag.customerId = new SelectList(db.Customers, "Id", "Name");
+            ViewBag.trackerId= new SelectList(db.Trackers,"Id","Company");
+            ViewBag.insuranceId = new SelectList(db.Insurances, "Id", "Company");
             return View();
         }
 
         // POST: Cars/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Model,Make,Mileage,Year,CC,buyingPrice,sellingPrice,maintainanceCost,Condition,Imported,ownerName,purchasedDate,soldDate,registerationNo,Customer_customerId,Tracker_trackerId,Insurance_insuranceId")] Car car)
+        public ActionResult Create([Bind(Include = "Model,Make,Mileage,Year,CC,buyingPrice,sellingPrice,maintainanceCost,Condition,Imported,ownerName,purchasedDate,soldDate,registerationNo,customerId,trackerId,InsuranceId")] Car car)
         {
             if (ModelState.IsValid)
             {
@@ -71,9 +72,9 @@ namespace Software_Engineering.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            ViewBag.Customer_CustomerID = new SelectList(db.Customers, "customerID", "Name", car.customerId);
-            ViewBag.Tracker_trackerId = new SelectList(db.Trackers, "trackerId", "Company",car.trackerId);
-            ViewBag.Insurance_insuranceId = new SelectList(db.Insurances, "insuranceId", "Company",car.insuranceId);
+            ViewBag.customerId = new SelectList(db.Customers, "Id", "Name", car.customerId);
+            ViewBag.trackerId = new SelectList(db.Trackers, "Id", "Company",car.trackerId);
+            ViewBag.insuranceId = new SelectList(db.Insurances, "Id", "Company",car.insuranceId);
             return View(car);
         }
 
@@ -89,9 +90,9 @@ namespace Software_Engineering.Controllers
             {
                 return HttpNotFound();
             }
-            ViewBag.Customer_CustomerID = new SelectList(db.Customers, "customerID", "Name", car.customerId);
-            ViewBag.Tracker_trackerId = new SelectList(db.Trackers, "trackerId", "Company", car.trackerId);
-            ViewBag.Insurance_insuranceId = new SelectList(db.Insurances, "insuranceId", "Company", car.insuranceId);
+            ViewBag.customerId = new SelectList(db.Customers, "Id", "Name", car.customerId);
+            ViewBag.trackerId = new SelectList(db.Trackers, "Id", "Company", car.trackerId);
+            ViewBag.insuranceId = new SelectList(db.Insurances, "Id", "Company", car.insuranceId);
             return View(car);
         }
         public ActionResult SellCar(int? id)
@@ -105,16 +106,16 @@ namespace Software_Engineering.Controllers
             {
                 return HttpNotFound();
             }
-            ViewBag.Customer_CustomerID = new SelectList(db.Customers, "customerID", "Name", car.customerId);
-            ViewBag.Tracker_trackerId = new SelectList(db.Trackers, "trackerId", "Company", car.trackerId);
-            ViewBag.Insurance_insuranceId = new SelectList(db.Insurances, "insuranceId", "Company", car.insuranceId);
+            ViewBag.customerId = new SelectList(db.Customers, "Id", "Name", car.customerId);
+            ViewBag.trackerId = new SelectList(db.Trackers, "Id", "Company", car.trackerId);
+            ViewBag.insuranceId = new SelectList(db.Insurances, "Id", "Company", car.insuranceId);
             return View(car);
         }
 
         // POST: Cars/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Model,Make,Mileage,Year,CC,buyingPrice,sellingPrice,maintainanceCost,Condition,Imported,ownerName,purchasedDate,soldDate,registerationNo,Customer_customerId,Tracker_trackerId,Insurance_insuranceId")] Car car)
+        public ActionResult Edit([Bind(Include = "Id,Model,Make,Mileage,Year,CC,buyingPrice,sellingPrice,maintainanceCost,Condition,Imported,ownerName,purchasedDate,soldDate,registerationNo,customerId,trackerId,InsuranceId")] Car car)
         {
             if (ModelState.IsValid)
             {
@@ -122,24 +123,23 @@ namespace Software_Engineering.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            ViewBag.Customer_CustomerID = new SelectList(db.Customers, "customerID", "Name", car.customerId);
-            ViewBag.Tracker_trackerId = new SelectList(db.Trackers, "trackerId", "Company", car.trackerId);
-            ViewBag.Insurance_insuranceId = new SelectList(db.Insurances, "insuranceId", "Company", car.insuranceId);
+            ViewBag.customerId = new SelectList(db.Customers, "Id", "Name", car.customerId);
+            ViewBag.trackerId = new SelectList(db.Trackers, "Id", "Company", car.trackerId);
+            ViewBag.insuranceId = new SelectList(db.Insurances, "Id", "Company", car.insuranceId);
             return View(car);
         }
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult SellCar([Bind(Include = "Model,Make,Mileage,Year,CC,buyingPrice,sellingPrice,maintainanceCost,Condition,Imported,ownerName,purchasedDate,soldDate,registerationNo,Customer_customerId,Tracker_trackerId,Insurance_insuranceId")] Car car)
+        public ActionResult SellCar([Bind(Include = "Id,Model,Make,Mileage,Year,CC,buyingPrice,sellingPrice,maintainanceCost,Condition,Imported,ownerName,purchasedDate,soldDate,registerationNo,customerId,trackerId,InsuranceId")] Car car)
         {
             if (ModelState.IsValid)
             {
                 db.Entry(car).State = EntityState.Modified;
-                db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            ViewBag.Customer_CustomerID = new SelectList(db.Customers, "customerID", "Name", car.customerId);
-            ViewBag.Tracker_trackerId = new SelectList(db.Trackers, "trackerId", "Company", car.trackerId);
-            ViewBag.Insurance_insuranceId = new SelectList(db.Insurances, "insuranceId", "Company", car.insuranceId);
+            ViewBag.customerId = new SelectList(db.Customers, "Id", "Name", car.customerId);
+            ViewBag.trackerId = new SelectList(db.Trackers, "Id", "Company", car.trackerId);
+            ViewBag.insuranceId = new SelectList(db.Insurances, "Id", "Company", car.insuranceId);
             return View(car);
         }
         // GET: Cars/Delete/5

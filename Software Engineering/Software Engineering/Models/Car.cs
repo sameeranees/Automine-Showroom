@@ -37,4 +37,9 @@ namespace Software_Engineering.Models
         public virtual Insurance Insurance { get; set; }
         public virtual Tracker Tracker { get; set; }
     }
+    public class ViewModel
+    {
+        public List<Car> Sold { get; set; }
+        public List<Car> UnSold { get; set; }
+    }
 }
