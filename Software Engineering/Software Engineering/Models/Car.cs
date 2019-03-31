@@ -11,7 +11,8 @@ namespace Software_Engineering.Models
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel;
+
     public partial class Car
     {
         public int Id { get; set; }
@@ -20,14 +21,21 @@ namespace Software_Engineering.Models
         public Nullable<int> Mileage { get; set; }
         public Nullable<int> Year { get; set; }
         public string CC { get; set; }
+        [DisplayName("Buying Price")]
         public long buyingPrice { get; set; }
+        [DisplayName("Selling Price")]
         public Nullable<long> sellingPrice { get; set; }
+        [DisplayName("Maintainance Cost")]
         public Nullable<long> maintainanceCost { get; set; }
         public string Condition { get; set; }
         public bool Imported { get; set; }
+        [DisplayName("Previous Owner")]
         public string ownerName { get; set; }
+        [DisplayName("Date Purchased")]
         public System.DateTime purchasedDate { get; set; }
+        [DisplayName("Date Sold")]
         public Nullable<System.DateTime> soldDate { get; set; }
+        [DisplayName("Registeration No")]
         public string registerationNo { get; set; }
         public Nullable<int> customerId { get; set; }
         public Nullable<int> trackerId { get; set; }

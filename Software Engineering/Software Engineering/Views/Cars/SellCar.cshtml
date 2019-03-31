@@ -80,19 +80,19 @@
                     </div>
 
                     <div class="form-group">
-                        @Html.LabelFor(model => model.customerId, "customerId", htmlAttributes: new { @class = "control-label col-md-2" })
+                        <p class="control-label col-md-2"><b>Customer</b></p>
                         @Html.DropDownList("customerId", null, htmlAttributes: new { @class = "form-control", @required = "required" })
                         @Html.ValidationMessageFor(model => model.customerId, "", new { @class = "text-danger" })
                     </div>
 
                     <div class="form-group">
-                        @Html.LabelFor(model => model.trackerId, "trackerId", htmlAttributes: new { @class = "control-label col-md-2" })
+                        <p class="control-label col-md-2"><b>Tracker</b></p>
                         @Html.DropDownList("trackerId", null, htmlAttributes: new { @class = "form-control", @required = "required" })
                         @Html.ValidationMessageFor(model => model.trackerId, "", new { @class = "text-danger" })
                     </div>
 
                     <div class="form-group">
-                        @Html.LabelFor(model => model.insuranceId, "insuranceId", htmlAttributes: new { @class = "control-label col-md-2" })
+                        <p class="control-label col-md-2"><b>Insurance</b></p>
                         @Html.DropDownList("insuranceId", null, htmlAttributes: new { @class = "form-control", @required = "required" })
                         @Html.ValidationMessageFor(model => model.insuranceId, "", new { @class = "text-danger" })
                     </div>

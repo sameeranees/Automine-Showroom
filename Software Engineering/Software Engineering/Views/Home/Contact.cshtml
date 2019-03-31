@@ -4,36 +4,18 @@
 <div class="nav-tabs-custom">
     <div class="tab-content">
         <h2>@ViewBag.Title.</h2>
-        <h3>@ViewBag.Message</h3>
 
         <address>
-            One Microsoft Way<br />
-            Redmond, WA 98052-6399<br />
-            <abbr title="Phone">P:</abbr>
-            425.555.0100
+            Khalid bin Waleed Road,<br>
+            KHADIJA ARCADE # 8,<br>
+            SHOP no. 4,<br>
+            MANIYA SOCIETY,<br>
+            Karachi
         </address>
 
         <address>
-            <strong>Support:</strong>   <a href="mailto:Support@example.com">Support@example.com</a><br />
-            <strong>Marketing:</strong> <a href="mailto:Marketing@example.com">Marketing@example.com</a>
+            <strong>Contact Us: </strong>021 34527572- 34527573 (12pm to 8pm)<br />
+            <strong>Email: </strong> <a href="mailto:automine@ymail.com">automine@ymail.com</a>
         </address>
      </div>
 </div>
-        <div class="box box-primary">
-            <div class="box-body">
-                @using (Html.BeginForm())
-                {
-                    <div class="form-group">
-                        @Html.Label("Name")
-                        @Html.TextBox("CustomerName", null, new { @class = "form-control" })
-                    </div>
-                    <div class="form-group">
-                        @Html.Label("Comment")
-                        @Html.TextArea("CustomerComment", new { @class = "textarea", rows = "10", style = "width:50%;background-color:#f8f8f8" })
-                    </div>
-                    <div class="box-footer">
-                        <button class="btn btn-primary" type="submit">Submit</button>
-                    </div>
-                }
-            </div>
-        </div>
