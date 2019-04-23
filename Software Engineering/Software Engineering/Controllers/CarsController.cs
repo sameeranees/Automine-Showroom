@@ -7,6 +7,7 @@ using Software_Engineering.Models;
 using System.Net;
 using System.Data.Entity;
 using System.Data.Entity.Validation;
+using Microsoft.Reporting.WebForms;
 
 namespace Software_Engineering.Controllers
 {
@@ -20,6 +21,56 @@ namespace Software_Engineering.Controllers
             car = db.Cars.Include(q => q.Tracker);
             car=db.Cars.Include(q => q.Insurance);
             return View(db.Cars.ToList());
+        }
+        public ActionResult Report(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            Car car = db.Cars.Find(id);
+            if (car == null)
+            {
+                return HttpNotFound();
+            }
+            LocalReport localreport= new LocalReport();
+            localreport.ReportPath = Server.MapPath("~/Report/Rdlc/Cars.rdlc");
+
+            int custid = Convert.ToInt32(db.Cars.Where(x => x.Id == id).Select(x => x.customerId).First());
+            int insuid = Convert.ToInt32(db.Cars.Where(x => x.Id == id).Select(x => x.insuranceId).First());
+            int tracid = Convert.ToInt32(db.Cars.Where(x => x.Id == id).Select(x => x.trackerId).First());
+
+            ReportDataSource reportdatasource = new ReportDataSource();
+            reportdatasource.Name = "DataSet1";
+            reportdatasource.Value = db.Cars.Where(x=> x.Id==id).ToList();
+            localreport.DataSources.Add(reportdatasource);
+
+            ReportDataSource reportdatasource2 = new ReportDataSource();
+            reportdatasource2.Name = "DataSet2";
+            reportdatasource2.Value = db.Customers.Where(x => x.Id == custid).ToList();
+            localreport.DataSources.Add(reportdatasource2);
+
+            ReportDataSource reportdatasource3 = new ReportDataSource();
+            reportdatasource3.Name = "DataSet3";
+            reportdatasource3.Value = db.Insurances.Where(x => x.Id == insuid).ToList();
+            localreport.DataSources.Add(reportdatasource3);
+
+            ReportDataSource reportdatasource4 = new ReportDataSource();
+            reportdatasource4.Name = "DataSet4";
+            reportdatasource4.Value = db.Trackers.Where(x => x.Id == tracid).ToList();
+            localreport.DataSources.Add(reportdatasource4);
+
+            string reportType = "PDF";
+            string mimeType;
+            string encoding;
+            string fileNameExtension = "pdf";
+            Warning[] warnings;
+            string[] streams;
+            byte[] renderedBytes;
+            renderedBytes = localreport.Render(reportType, "", out mimeType, out encoding, out fileNameExtension, out streams, out warnings);
+            Response.AddHeader("content-disposition", "attachment; filename=Urls." + fileNameExtension);
+            return File(renderedBytes, fileNameExtension);
+            return View(car);
         }
         public ActionResult Sell()
         {

@@ -77,6 +77,7 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Microsoft.ReportViewer.WebForms, Version=12.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL" />
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
@@ -240,6 +241,16 @@
       <DependentUpon>Models.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Software_EngineeringDataSet.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Software_EngineeringDataSet.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Software_EngineeringDataSet1.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Software_EngineeringDataSet1.xsd</DependentUpon>
+    </Compile>
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -451,6 +462,28 @@
     <Content Include="Views\Tracker\Details.cshtml" />
     <Content Include="Views\Tracker\Create.cshtml" />
     <Content Include="Views\Tracker\Edit.cshtml" />
+    <Content Include="Software_EngineeringDataSet.xsc">
+      <DependentUpon>Software_EngineeringDataSet.xsd</DependentUpon>
+    </Content>
+    <None Include="Software_EngineeringDataSet.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>Software_EngineeringDataSet.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <Content Include="Software_EngineeringDataSet.xss">
+      <DependentUpon>Software_EngineeringDataSet.xsd</DependentUpon>
+    </Content>
+    <Content Include="Software_EngineeringDataSet1.xsc">
+      <DependentUpon>Software_EngineeringDataSet1.xsd</DependentUpon>
+    </Content>
+    <None Include="Software_EngineeringDataSet1.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>Software_EngineeringDataSet1.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <Content Include="Software_EngineeringDataSet1.xss">
+      <DependentUpon>Software_EngineeringDataSet1.xsd</DependentUpon>
+    </Content>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="admin-lte\plugins\" />
@@ -466,6 +499,9 @@
   </ItemGroup>
   <ItemGroup>
     <WCFMetadata Include="Service References\" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Report\Rdlc\Cars.rdlc" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
