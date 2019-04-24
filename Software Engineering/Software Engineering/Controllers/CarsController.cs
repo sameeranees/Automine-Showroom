@@ -15,6 +15,7 @@ namespace Software_Engineering.Controllers
     {
         Software_EngineeringEntities1 db = new Software_EngineeringEntities1();
         // GET: Cars
+        [Authorize(Roles = "Admin,Finance Manager, Manager")]
         public ActionResult Index()
         {
             var car = db.Cars.Include(q => q.Customer);
@@ -22,6 +23,20 @@ namespace Software_Engineering.Controllers
             car=db.Cars.Include(q => q.Insurance);
             return View(db.Cars.ToList());
         }
+        [Authorize(Roles = "Admin,Finance Manager, Manager")]
+        public ActionResult Cars()
+        {
+            var car = db.Cars.Include(q => q.Customer);
+            car = db.Cars.Include(q => q.Tracker);
+            car = db.Cars.Include(q => q.Insurance);
+            return View(db.Cars.ToList());
+        }
+        [Authorize(Roles = "Admin,Finance Manager, Manager")]
+        public ActionResult Home()
+        {
+            return View();
+        }
+        [Authorize(Roles = "Finance Manager")]
         public ActionResult Report(int? id)
         {
             if (id == null)
@@ -72,6 +87,7 @@ namespace Software_Engineering.Controllers
             return File(renderedBytes, fileNameExtension);
             return View(car);
         }
+        [Authorize(Roles = "Admin,Finance Manager, Manager")]
         public ActionResult Sell()
         {
             var car = db.Cars.Include(q => q.Customer);
@@ -86,6 +102,7 @@ namespace Software_Engineering.Controllers
         }
 
         // GET: Cars/Details/5
+        [Authorize(Roles = "Admin,Finance Manager, Manager")]
         public ActionResult Details(int? id)
         {
             if (id == null)
@@ -103,6 +120,7 @@ namespace Software_Engineering.Controllers
         }
 
         // GET: Cars/Create
+        [Authorize(Roles = "Admin,Finance Manager, Manager")]
         public ActionResult Create()
         {
             ViewBag.customerId = new SelectList(db.Customers, "Id", "Name");
@@ -114,6 +132,7 @@ namespace Software_Engineering.Controllers
         // POST: Cars/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Admin,Finance Manager, Manager")]
         public ActionResult Create([Bind(Include = "Model,Make,Mileage,Year,CC,buyingPrice,sellingPrice,maintainanceCost,Condition,Imported,ownerName,purchasedDate,soldDate,registerationNo,customerId,trackerId,InsuranceId")] Car car)
         {
             if (ModelState.IsValid)
@@ -130,6 +149,7 @@ namespace Software_Engineering.Controllers
         }
 
         // GET: Cars/Edit/5
+        [Authorize(Roles = "Admin,Finance Manager, Manager")]
         public ActionResult Edit(int? id)
         {
             if (id == null)
@@ -146,6 +166,7 @@ namespace Software_Engineering.Controllers
             ViewBag.insuranceId = new SelectList(db.Insurances, "Id", "Company", car.insuranceId);
             return View(car);
         }
+        [Authorize(Roles = "Admin,Finance Manager, Manager")]
         public ActionResult SellCar(int? id)
         {
             if (id == null)
@@ -166,6 +187,7 @@ namespace Software_Engineering.Controllers
         // POST: Cars/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Admin,Finance Manager, Manager")]
         public ActionResult Edit([Bind(Include = "Id,Model,Make,Mileage,Year,CC,buyingPrice,sellingPrice,maintainanceCost,Condition,Imported,ownerName,purchasedDate,soldDate,registerationNo,customerId,trackerId,InsuranceId")] Car car)
         {
             if (ModelState.IsValid)
@@ -181,12 +203,14 @@ namespace Software_Engineering.Controllers
         }
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Admin,Finance Manager, Manager")]
         public ActionResult SellCar([Bind(Include = "Id,Model,Make,Mileage,Year,CC,buyingPrice,sellingPrice,maintainanceCost,Condition,Imported,ownerName,purchasedDate,soldDate,registerationNo,customerId,trackerId,InsuranceId")] Car car)
         {
             if (ModelState.IsValid)
             {
                 db.Entry(car).State = EntityState.Modified;
-                return RedirectToAction("Index");
+                db.SaveChanges();
+                return RedirectToAction("Sell");
             }
             ViewBag.customerId = new SelectList(db.Customers, "Id", "Name", car.customerId);
             ViewBag.trackerId = new SelectList(db.Trackers, "Id", "Company", car.trackerId);
@@ -194,6 +218,7 @@ namespace Software_Engineering.Controllers
             return View(car);
         }
         // GET: Cars/Delete/5
+        [Authorize(Roles ="Admin,Finance Manager, Manager")]
         public ActionResult Delete(int? id)
         {
             if (id == null)
@@ -211,6 +236,7 @@ namespace Software_Engineering.Controllers
         // POST: Cars/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Admin,Finance Manager, Manager")]
         public ActionResult DeleteConfirmed(int id)
         {
             Car car = db.Cars.Find(id);

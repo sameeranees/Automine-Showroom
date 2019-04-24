@@ -32,14 +32,14 @@ namespace Software_Engineering.Controllers
             .Write();
             return null;
         }
-
+        [Authorize(Roles = "Admin,Finance Manager, Manager")]
         public ActionResult About()
         {
             ViewBag.Message = "Your application description page.";
 
             return View();
         }
-
+        [Authorize(Roles = "Admin,Finance Manager, Manager")]
         public ActionResult Contact()
         {
             ViewBag.Message = "Your contact page.";

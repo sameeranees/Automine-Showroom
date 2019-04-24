@@ -13,12 +13,14 @@ namespace Software_Engineering.Controllers
     {
         // GET: Tracker
         Software_EngineeringEntities1 db = new Software_EngineeringEntities1();
+        [Authorize(Roles = "Admin,Finance Manager, Manager")]
         public ActionResult Index()
         {
             return View(db.Trackers.ToList());
         }
 
         // GET: Tracker/Details/5
+        [Authorize(Roles = "Admin,Finance Manager, Manager")]
         public ActionResult Details(int? id)
         {
             if (id == null)
@@ -36,6 +38,7 @@ namespace Software_Engineering.Controllers
         }
 
         // GET: Tracker/Create
+        [Authorize(Roles = "Admin,Finance Manager, Manager")]
         public ActionResult Create()
         {
             return View();
@@ -44,6 +47,7 @@ namespace Software_Engineering.Controllers
         // POST: Tracker/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Admin,Finance Manager, Manager")]
         public ActionResult Create([Bind(Include = "Company,Package")] Tracker tracker)
         {
             if (ModelState.IsValid)
@@ -57,6 +61,7 @@ namespace Software_Engineering.Controllers
         }
 
         // GET: Tracker/Edit/5
+        [Authorize(Roles = "Admin,Finance Manager, Manager")]
         public ActionResult Edit(int? id)
         {
             if (id == null)
@@ -74,6 +79,7 @@ namespace Software_Engineering.Controllers
         // POST: Tracker/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Admin,Finance Manager, Manager")]
         public ActionResult Edit([Bind(Include = "Company,Package")] Tracker tracker)
         {
             if (ModelState.IsValid)
@@ -86,6 +92,7 @@ namespace Software_Engineering.Controllers
         }
 
         // GET: Tracker/Delete/5
+        [Authorize(Roles = "Admin,Finance Manager, Manager")]
         public ActionResult Delete(int? id)
         {
             if (id == null)
@@ -103,6 +110,7 @@ namespace Software_Engineering.Controllers
         // POST: Tracker/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Admin,Finance Manager, Manager")]
         public ActionResult Delete(int id)
         {
             Tracker tracker = db.Trackers.Find(id);

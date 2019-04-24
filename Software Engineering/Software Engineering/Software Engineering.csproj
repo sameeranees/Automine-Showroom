@@ -204,6 +204,7 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\InsuranceController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\ReportController.cs" />
     <Compile Include="Controllers\RoleController.cs" />
     <Compile Include="Controllers\TrackerController.cs" />
     <Compile Include="CustomFilters\customFilter.cs" />
@@ -484,11 +485,17 @@
     <Content Include="Software_EngineeringDataSet1.xss">
       <DependentUpon>Software_EngineeringDataSet1.xsd</DependentUpon>
     </Content>
+    <Content Include="Views\Report\Report.cshtml" />
+    <Content Include="Views\Cars\Cars.cshtml" />
+    <Content Include="Views\Cars\Home.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="admin-lte\plugins\" />
     <Folder Include="Content\bower_components\" />
     <Folder Include="Content\dist\" />
+    <Folder Include="image\" />
+    <Folder Include="source\" />
+    <Folder Include="style\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
@@ -502,6 +509,7 @@
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Report\Rdlc\Cars.rdlc" />
+    <EmbeddedResource Include="Report\Rdlc\Total.rdlc" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

@@ -1,0 +1,134 @@
+﻿@model IEnumerable<Software_Engineering.Models.Car>
+
+@{
+    Layout = null;
+}
+
+<!doctype html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Scarica gratis GARAGE Template html/css - Web Domus Italia - Web Agency </title>
+    <meta name="description" content="Scarica gratis il nostro Template HTML/CSS GARAGE. Se avete bisogno di un design per il vostro sito web GARAGE può fare per voi. Web Domus Italia">
+    <meta name="author" content="Web Domus Italia">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="~/source/bootstrap-3.3.6-dist/css/bootstrap.css">
+    <link rel="stylesheet" type="text/css" href="~/source/font-awesome-4.5.0/css/font-awesome.css">
+    <link rel="stylesheet" type="text/css" href="~/style/slider.css">
+    <link rel="stylesheet" type="text/css" href="~/style/mystyle.css">
+    <link rel="stylesheet" type="text/css" href="~/style/contactstyle.css">
+</head>
+<body>
+    <!-- Header -->
+    <div class="allcontain">
+        <div class="header">
+            <ul class="socialicon">
+                <li><a href="#"><i class="fa fa-facebook"></i></a></li>
+                <li><a href="#"><i class="fa fa-twitter"></i></a></li>
+                <li><a href="#"><i class="fa fa-google-plus"></i></a></li>
+                <li><a href="#"><i class="fa fa-pinterest"></i></a></li>
+            </ul>
+            <ul class="givusacall">
+                <li>Give us a call : 0320-3070777 </li>
+            </ul>
+        </div>
+        <!-- Navbar Up -->
+        <nav class="topnavbar navbar-default topnav">
+            <div class="container">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle collapsed toggle-costume" data-toggle="collapse" data-target="#upmenu" aria-expanded="false">
+                        <span class="sr-only"> Toggle navigaion</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand logo" href="#"><img src="~/image/logo1.jpg" alt="logo"></a>
+                </div>
+            </div>
+            <div class="collapse navbar-collapse" id="upmenu">
+                <ul class="nav navbar-nav" id="navbarontop">
+                    <li class="dropdown">
+                    <li class="active">@Html.ActionLink("HOME", "Home", "Cars") </li>
+                    </li>
+                    <li class="active"><a href="index.html">CARS</a> </li>
+                </ul>
+            </div>
+        </nav>
+    </div>
+    <!--_______________________________________ Carousel__________________________________ -->
+    <!-- ________________________LATEST CARS SECTION _______________________-->
+    <div class="latestcars">
+        <h1 class="text-center">&bullet; LATEST   CARS &bullet;</h1>
+        <table class="table" style="width=64%; background-color: grey; margin-left: 20%; max-width:64%">
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.Model)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Make)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Year)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.CC)
+                </th>
+            </tr>
+
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Model)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Make)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Year)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.CC)
+                    </td>
+                </tr>
+            }
+        </table>
+    </div>
+    <br>
+    <br>
+    <!-- ________________________Latest Cars Image Thumbnail________________-->
+    <!-- ______________________________________________________Bottom Menu ______________________________-->
+    <div class="bottommenu">
+        <div class="bottomlogo">
+            <span class="dotlogo">&bullet;</span><img src="~/image/logo1.jpg" alt="logo1"><span class="dotlogo">&bullet;;</span>
+        </div>
+        <p>
+            "Lorem ipsum dolor sit amet, consectetur,  sed do eiusmod tempor incididunt <br>
+            eiusmod tempor incididunt
+        </p>
+        <img src="~/image/line.png" alt="line"> <br>
+        <div class="bottomsocial">
+            <a href="#"><i class="fa fa-facebook"></i></a>
+            <a href="#"><i class="fa fa-twitter"></i></a>
+            <a href="#"><i class="fa fa-google-plus"></i></a>
+            <a href="#"><i class="fa fa-pinterest"></i></a>
+        </div>
+        <div class="footer">
+            <div class="copyright">
+                &copy; Copy right 2016 | <a href="#">Privacy </a>| <a href="#">Policy</a>
+            </div>
+            <div class="atisda">
+                Designed by <a href="http://www.webdomus.net/">Web Domus Italia - Web Agency </a>
+            </div>
+        </div>
+    </div>
+    </div>
+
+    <script type="text/javascript" src="~/source/bootstrap-3.3.6-dist/js/jquery.js"></script>
+    <script type="text/javascript" src="~/source/js/isotope.js"></script>
+    <script type="text/javascript" src="~/source/js/myscript.js"></script>
+    <script type="text/javascript" src="~/source/bootstrap-3.3.6-dist/js/jquery.1.11.js"></script>
+    <script type="text/javascript" src="~/source/bootstrap-3.3.6-dist/js/bootstrap.js"></script>
+</body>
+</html>

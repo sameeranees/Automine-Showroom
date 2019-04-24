@@ -12,6 +12,9 @@ namespace Software_Engineering.Models
     using System;
     using System.Collections.Generic;
     using System.ComponentModel;
+    using System.Globalization;
+    using System.Linq;
+    using System.Web.Mvc;
 
     public partial class Car
     {
@@ -44,10 +47,13 @@ namespace Software_Engineering.Models
         public virtual Customer Customer { get; set; }
         public virtual Insurance Insurance { get; set; }
         public virtual Tracker Tracker { get; set; }
+        public string Month { get; set; }
+        public IEnumerable<SelectListItem> months { get; set; }
     }
     public class ViewModel
     {
         public List<Car> Sold { get; set; }
         public List<Car> UnSold { get; set; }
     }
+    
 }
