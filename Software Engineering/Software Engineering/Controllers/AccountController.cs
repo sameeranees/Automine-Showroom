@@ -137,7 +137,6 @@ namespace Software_Engineering.Controllers
 
         //
         // GET: /Account/Register
-        [AllowAnonymous]
         [Authorize(Roles = "Admin")]
         public ActionResult Register()
         {
@@ -148,7 +147,6 @@ namespace Software_Engineering.Controllers
         //
         // POST: /Account/Register
         [HttpPost]
-        [AllowAnonymous]
         [ValidateAntiForgeryToken]
         [Authorize(Roles = "Admin")]
         public async Task<ActionResult> Register(RegisterViewModel model)

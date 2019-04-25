@@ -488,6 +488,9 @@
     <Content Include="Views\Report\Report.cshtml" />
     <Content Include="Views\Cars\Cars.cshtml" />
     <Content Include="Views\Cars\Home.cshtml" />
+    <Content Include="Views\Customer\Delete.cshtml" />
+    <Content Include="Views\Insurance\Delete.cshtml" />
+    <Content Include="Views\Tracker\Delete.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="admin-lte\plugins\" />

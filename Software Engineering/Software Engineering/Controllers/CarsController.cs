@@ -23,15 +23,16 @@ namespace Software_Engineering.Controllers
             car=db.Cars.Include(q => q.Insurance);
             return View(db.Cars.ToList());
         }
-        [Authorize(Roles = "Admin,Finance Manager, Manager")]
+        //[Authorize(Roles = "Admin,Finance Manager, Manager")]
         public ActionResult Cars()
         {
             var car = db.Cars.Include(q => q.Customer);
             car = db.Cars.Include(q => q.Tracker);
             car = db.Cars.Include(q => q.Insurance);
-            return View(db.Cars.ToList());
+            car=db.Cars.Where(q=>q.soldDate==null);
+            return View(car.ToList());
         }
-        [Authorize(Roles = "Admin,Finance Manager, Manager")]
+        //[Authorize(Roles = "Admin,Finance Manager, Manager")]
         public ActionResult Home()
         {
             return View();

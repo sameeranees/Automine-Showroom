@@ -111,19 +111,19 @@
 
             <div class="form-group">
                 <p class="control-label col-md-2"><b>Customer</b></p>
-                    @Html.DropDownList("customerId", null, htmlAttributes: new { @class = "form-control" })
+                    @Html.DropDownList("customerId", null,"", htmlAttributes: new { @class = "form-control" })
                     @Html.ValidationMessageFor(model => model.Customer, "", new { @class = "text-danger" })
             </div>
 
             <div class="form-group">
                 <p class="control-label col-md-2"><b>Tracker</b></p>
-                    @Html.DropDownList("trackerId", null, htmlAttributes: new { @class = "form-control" })
+                    @Html.DropDownList("trackerId", null, "", htmlAttributes: new { @class = "form-control" })
                     @Html.ValidationMessageFor(model => model.Tracker, "", new { @class = "text-danger" })
             </div>
 
             <div class="form-group">
                 <p class="control-label col-md-2"><b>Insurance</b></p>
-                    @Html.DropDownList("insuranceId", null, htmlAttributes: new { @class = "form-control" })
+                    @Html.DropDownList("insuranceId", null, "", htmlAttributes: new { @class = "form-control" })
                     @Html.ValidationMessageFor(model => model.Insurance, "", new { @class = "text-danger" })
             </div>
 
