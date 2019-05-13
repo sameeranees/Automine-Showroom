@@ -29,7 +29,7 @@ namespace Software_Engineering.Controllers
             var car = db.Cars.Include(q => q.Customer);
             car = db.Cars.Include(q => q.Tracker);
             car = db.Cars.Include(q => q.Insurance);
-            car=db.Cars.Where(q=>q.soldDate==null);
+            car=db.Cars.Where(q=>q.soldDate==null).OrderBy(q=>q.Make);
             return View(car.ToList());
         }
         //[Authorize(Roles = "Admin,Finance Manager, Manager")]

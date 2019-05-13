@@ -6,10 +6,155 @@
 
 <!doctype html>
 <html>
+<style>
+    body {
+  background-color: #3e94ec;
+  font-family: "Roboto", helvetica, arial, sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+  text-rendering: optimizeLegibility;
+}
+
+div.table-title {
+   display: block;
+  margin: auto;
+  max-width: 600px;
+  padding:5px;
+  width: 100%;
+}
+
+.table-title h3 {
+   color: #fafafa;
+   font-size: 30px;
+   font-weight: 400;
+   font-style:normal;
+   font-family: "Roboto", helvetica, arial, sans-serif;
+   text-shadow: -1px -1px 1px rgba(0, 0, 0, 0.1);
+   text-transform:uppercase;
+}
+
+
+/*** Table Styles **/
+
+.table-fill {
+  background: white;
+  border-radius:3px;
+  border-collapse: collapse;
+  height: 320px;
+  margin: auto;
+  max-width: 900px;
+  padding:5px;
+  width: 100%;
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+  animation: float 5s infinite;
+}
+ 
+th {
+  color:#D5DDE5;;
+  background:#1b1e24;
+  border-bottom:4px solid #9ea7af;
+  border-right: 1px solid #343a45;
+  font-size:23px;
+  font-weight: 100;
+  padding:24px;
+  text-align:left;
+  text-shadow: 0 1px 1px rgba(0, 0, 0, 0.1);
+  vertical-align:middle;
+}
+
+th:first-child {
+  border-top-left-radius:3px;
+}
+ 
+th:last-child {
+  border-top-right-radius:3px;
+  border-right:none;
+}
+  
+tr {
+  border-top: 1px solid #C1C3D1;
+  border-bottom-: 1px solid #C1C3D1;
+  color:#666B85;
+  font-size:16px;
+  font-weight:normal;
+  text-shadow: 0 1px 1px rgba(256, 256, 256, 0.1);
+}
+ 
+tr:hover td {
+  background:#4E5066;
+  color:#FFFFFF;
+  border-top: 1px solid #22262e;
+}
+ 
+tr:first-child {
+  border-top:none;
+}
+
+tr:last-child {
+  border-bottom:none;
+}
+ 
+tr:nth-child(odd) td {
+  background:#EBEBEB;
+}
+ 
+tr:nth-child(odd):hover td {
+  background:#4E5066;
+}
+
+tr:last-child td:first-child {
+  border-bottom-left-radius:3px;
+}
+ 
+tr:last-child td:last-child {
+  border-bottom-right-radius:3px;
+}
+ 
+td {
+  background:#FFFFFF;
+  padding:20px;
+  text-align:left;
+  vertical-align:middle;
+  font-weight:300;
+  font-size:18px;
+  text-shadow: -1px -1px 1px rgba(0, 0, 0, 0.1);
+  border-right: 1px solid #C1C3D1;
+}
+
+td:last-child {
+  border-right: 0px;
+}
+
+th.text-left {
+  text-align: left;
+}
+
+th.text-center {
+  text-align: center;
+}
+
+th.text-right {
+  text-align: right;
+}
+
+td.text-left {
+  text-align: left;
+}
+
+td.text-center {
+  text-align: center;
+}
+
+td.text-right {
+  text-align: right;
+}
+
+}
+</style>
 <head>
     <meta charset="UTF-8">
-    <title>Scarica gratis GARAGE Template html/css - Web Domus Italia - Web Agency </title>
-    <meta name="description" content="Scarica gratis il nostro Template HTML/CSS GARAGE. Se avete bisogno di un design per il vostro sito web GARAGE può fare per voi. Web Domus Italia">
+    <title>Automine </title>
+    <meta name="description" content="Automine">
     <meta name="author" content="Web Domus Italia">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -18,8 +163,9 @@
     <link rel="stylesheet" type="text/css" href="~/style/slider.css">
     <link rel="stylesheet" type="text/css" href="~/style/mystyle.css">
     <link rel="stylesheet" type="text/css" href="~/style/contactstyle.css">
+    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:400,500,700,300,100">
 </head>
-<body>
+<body style="background-color:#8a8787">
     <!-- Header -->
     <div class="allcontain">
         <div class="header">
@@ -46,12 +192,12 @@
                     <a class="navbar-brand logo" href="#"><img src="~/image/logo1.jpg" alt="logo"></a>
                 </div>
             </div>
-            <div class="collapse navbar-collapse" id="upmenu">
+            <div class="collapse navbar-collapse" id="upmenu" style="background-color:rgb(51, 51, 51)">
                 <ul class="nav navbar-nav" id="navbarontop">
                     <li class="dropdown">
-                    <li class="active">@Html.ActionLink("HOME", "Home", "Cars") </li>
+                    <li class="active"><a href="/Cars/Home" style="color: white;">HOME</a> </li>
                     </li>
-                    <li class="active"><a href="index.html">CARS</a> </li>
+                    <li class="active"><a href="/Cars/Cars" style="color: white;">CARS</a> </li>
                 </ul>
             </div>
         </nav>
@@ -60,39 +206,44 @@
     <!-- ________________________LATEST CARS SECTION _______________________-->
     <div class="latestcars">
         <h1 class="text-center">&bullet; LATEST   CARS &bullet;</h1>
-        <table class="table" style="width=64%; background-color: grey; margin-left: 20%; max-width:64%">
-            <tr>
-                <th>
-                    @Html.DisplayNameFor(model => model.Model)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.Make)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.Year)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.CC)
-                </th>
-            </tr>
-
-            @foreach (var item in Model)
-            {
+        <table class="table-fill">
+            <thead>
                 <tr>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Model)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Make)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Year)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.CC)
-                    </td>
+                    <th class="text-left">
+                        @Html.DisplayNameFor(model => model.Make)
+                    </th>
+                    <th class="text-left">
+                        @Html.DisplayNameFor(model => model.Model)
+                    </th>
+
+                    <th class="text-left">
+                        @Html.DisplayNameFor(model => model.Year)
+                    </th>
+                    <th class="text-left">
+                        @Html.DisplayNameFor(model => model.CC)
+                    </th>
                 </tr>
-            }
+            </thead>
+            <tbody class="table-hover">
+                @foreach (var item in Model)
+                {
+                    <tr>
+
+                        <td class="text-left">
+                            @Html.DisplayFor(modelItem => item.Make)
+                        </td>
+                        <td class="text-left">
+                            @Html.DisplayFor(modelItem => item.Model)
+                        </td>
+                        <td class="text-left">
+                            @Html.DisplayFor(modelItem => item.Year)
+                        </td>
+                        <td class="text-left">
+                            @Html.DisplayFor(modelItem => item.CC)
+                        </td>
+                    </tr>
+                }
+            </tbody>
         </table>
     </div>
     <br>
@@ -103,10 +254,7 @@
         <div class="bottomlogo">
             <span class="dotlogo">&bullet;</span><img src="~/image/logo1.jpg" alt="logo1"><span class="dotlogo">&bullet;;</span>
         </div>
-        <p>
-            "Lorem ipsum dolor sit amet, consectetur,  sed do eiusmod tempor incididunt <br>
-            eiusmod tempor incididunt
-        </p>
+
         <img src="~/image/line.png" alt="line"> <br>
         <div class="bottomsocial">
             <a href="#"><i class="fa fa-facebook"></i></a>
