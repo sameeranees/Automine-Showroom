@@ -26,7 +26,10 @@ namespace Software_Engineering.Controllers
             ArrayList yValue2 = new ArrayList();
             var results = (from c in context.Cars select c);
             results.ToList().ForEach(rs => xValue2.Add(rs.Make));
-            results.ToList().ForEach(rs => yValue2.Add(rs.Make.Count()));
+            foreach (string item in xValue2)
+            {
+                yValue2.Add(results.Where(s => s.Make == item).Count());
+            }
             for(int i=0; i<xValue2.Count;i++)
             {
                 if (!xValue.Contains(xValue2[i]))
@@ -35,7 +38,7 @@ namespace Software_Engineering.Controllers
                     yValue.Add(yValue2[i]);
                 }
             }
-            new Chart(width: 600, height: 400, theme: ChartTheme.Green)
+            new Chart(width: 600, height: 600, theme: ChartTheme.Green)
             .AddTitle("Cars")
             .AddSeries("Default", chartType: "Pie", xValue: xValue, yValues: yValue)
             .Write();
