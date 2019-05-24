@@ -56,7 +56,7 @@
                     <div class="form-group">
                         @Html.Label("Select Your User Type", new { @class = "col-md-2 control-label" })
                         <div class="col-md-10">
-                            @Html.DropDownList("Name")
+                            @Html.DropDownList("Name", (SelectList)ViewBag.Name, "--Choose Role--")
                         </div>
                     </div>
     <!--Ends Here-->

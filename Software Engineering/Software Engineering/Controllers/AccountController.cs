@@ -80,7 +80,7 @@ namespace Software_Engineering.Controllers
             switch (result)
             {
                 case SignInStatus.Success:
-                    return RedirectToLocal(returnUrl);
+                    return RedirectToLocal("~/Portal");
                 case SignInStatus.LockedOut:
                     return View("Lockout");
                 case SignInStatus.RequiresVerification:
@@ -165,12 +165,13 @@ namespace Software_Engineering.Controllers
 
                     await SignInManager.SignInAsync(user, isPersistent: false, rememberBrowser: false);
 
-                    return RedirectToAction("Index", "Home");
+                    return Redirect("~/Portal");
                 }
                 AddErrors(result);
             }
 
             // If we got this far, something failed, redisplay form
+            ViewBag.Name = new SelectList(context.Roles.ToList(), "Name", "Name");
             return View(model);
         }
 
@@ -394,7 +395,7 @@ namespace Software_Engineering.Controllers
         public ActionResult LogOff()
         {
             AuthenticationManager.SignOut(DefaultAuthenticationTypes.ApplicationCookie);
-            return RedirectToAction("Index", "Home");
+            return Redirect("~/Portal");
         }
 
         //

@@ -7,14 +7,41 @@
 <!doctype html>
 <html>
 <style>
-    body {
+* {
+  box-sizing: border-box;
+}
+body {
   background-color: #3e94ec;
   font-family: "Roboto", helvetica, arial, sans-serif;
   font-size: 16px;
   font-weight: 400;
   text-rendering: optimizeLegibility;
+  text-align:center;
+}
+.column{
+  float: left;
+  width: 25%;
+  padding: 0 10px;
+  height:350px;
+}
+.row {
+    width:90%;
+    display:inline-block;
+    
 }
 
+/* Clear floats after the columns */
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+.card {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  padding: 16px;
+  text-align: center;
+  background-color: #f1f1f1;
+}
 div.table-title {
    display: block;
   margin: auto;
@@ -195,7 +222,7 @@ td.text-right {
             <div class="collapse navbar-collapse" id="upmenu" style="background-color:rgb(51, 51, 51)">
                 <ul class="nav navbar-nav" id="navbarontop">
                     <li class="dropdown">
-                    <li class="active"><a href="/Cars/Home" style="color: white;">HOME</a> </li>
+                    <li class="active"><a href="/" style="color: white;">HOME</a> </li>
                     </li>
                     <li class="active"><a href="/Cars/Cars" style="color: white;">CARS</a> </li>
                 </ul>
@@ -206,71 +233,55 @@ td.text-right {
     <!-- ________________________LATEST CARS SECTION _______________________-->
     <div class="latestcars">
         <h1 class="text-center">&bullet; LATEST   CARS &bullet;</h1>
-        <table class="table-fill">
-            <thead>
-                <tr>
-                    <th class="text-left">
-                        @Html.DisplayNameFor(model => model.Make)
-                    </th>
-                    <th class="text-left">
-                        @Html.DisplayNameFor(model => model.Model)
-                    </th>
-
-                    <th class="text-left">
-                        @Html.DisplayNameFor(model => model.Year)
-                    </th>
-                    <th class="text-left">
-                        @Html.DisplayNameFor(model => model.CC)
-                    </th>
-                </tr>
-            </thead>
-            <tbody class="table-hover">
-                @foreach (var item in Model)
-                {
-                    <tr>
-
-                        <td class="text-left">
-                            @Html.DisplayFor(modelItem => item.Make)
-                        </td>
-                        <td class="text-left">
-                            @Html.DisplayFor(modelItem => item.Model)
-                        </td>
-                        <td class="text-left">
-                            @Html.DisplayFor(modelItem => item.Year)
-                        </td>
-                        <td class="text-left">
-                            @Html.DisplayFor(modelItem => item.CC)
-                        </td>
-                    </tr>
-                }
-            </tbody>
-        </table>
+    @{ 
+        int i = 0;
+    }
+    @foreach(var item in Model)
+    {
+        if (i % 4 == 0)
+        {
+            @:<div class="row">
+        }
+        @:<div class='column'>
+            @:<div class='card'>
+                @:<h1>@Html.DisplayFor(modelItem => item.Make) @Html.DisplayFor(modelItem => item.Model)</h1><br />
+                @:<h2>@Html.DisplayFor(modelItem => item.Year)</h2><br />
+                @:<h2>@Html.DisplayFor(modelItem => item.CC)</h2>
+            @:</div>
+         @:</div>
+        if (i % 4 == 3)
+        {
+            @:</div><br>
+            
+        }
+        i = i + 1;
+    }
     </div>
-    <br>
-    <br>
-    <!-- ________________________Latest Cars Image Thumbnail________________-->
-    <!-- ______________________________________________________Bottom Menu ______________________________-->
-    <div class="bottommenu">
-        <div class="bottomlogo">
-            <span class="dotlogo">&bullet;</span><img src="~/image/logo1.jpg" alt="logo1"><span class="dotlogo">&bullet;;</span>
-        </div>
-
-        <img src="~/image/line.png" alt="line"> <br>
-        <div class="bottomsocial">
-            <a href="#"><i class="fa fa-facebook"></i></a>
-            <a href="#"><i class="fa fa-twitter"></i></a>
-            <a href="#"><i class="fa fa-google-plus"></i></a>
-            <a href="#"><i class="fa fa-pinterest"></i></a>
-        </div>
-        <div class="footer">
-            <div class="copyright">
-                &copy; Copy right 2016 | <a href="#">Privacy </a>| <a href="#">Policy</a>
+        <br>
+        <br>
+        <!-- ________________________Latest Cars Image Thumbnail________________-->
+        <!-- ______________________________________________________Bottom Menu ______________________________-->
+        <div class="bottommenu">
+            <div class="bottomlogo">
+                <span class="dotlogo">&bullet;</span><img src="~/image/logo1.jpg" alt="logo1"><span class="dotlogo">&bullet;;</span>
             </div>
-            <div class="atisda">
-                Designed by <a href="http://www.webdomus.net/">Web Domus Italia - Web Agency </a>
+
+            <img src="~/image/line.png" alt="line"> <br>
+            <div class="bottomsocial">
+                <a href="#"><i class="fa fa-facebook"></i></a>
+                <a href="#"><i class="fa fa-twitter"></i></a>
+                <a href="#"><i class="fa fa-google-plus"></i></a>
+                <a href="#"><i class="fa fa-pinterest"></i></a>
+            </div>
+            <div class="footer">
+                <div class="copyright">
+                    &copy; Copy right 2016 | <a href="#">Privacy </a>| <a href="#">Policy</a>
+                </div>
+                <div class="atisda">
+                    Designed by <a href="http://www.webdomus.net/">Web Domus Italia - Web Agency </a>
+                </div>
             </div>
         </div>
-    </div>
     </div>
 
     <script type="text/javascript" src="~/source/bootstrap-3.3.6-dist/js/jquery.js"></script>
