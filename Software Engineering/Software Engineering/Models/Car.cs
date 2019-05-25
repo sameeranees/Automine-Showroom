@@ -43,7 +43,7 @@ namespace Software_Engineering.Models
         public Nullable<int> customerId { get; set; }
         public Nullable<int> trackerId { get; set; }
         public Nullable<int> insuranceId { get; set; }
-    
+        public byte[] Image { get; set; }
         public virtual Customer Customer { get; set; }
         public virtual Insurance Insurance { get; set; }
         public virtual Tracker Tracker { get; set; }
@@ -55,5 +55,6 @@ namespace Software_Engineering.Models
         public List<Car> Sold { get; set; }
         public List<Car> UnSold { get; set; }
     }
-    
+
 }
+

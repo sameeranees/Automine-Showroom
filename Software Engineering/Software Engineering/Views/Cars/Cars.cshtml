@@ -22,7 +22,7 @@ body {
   float: left;
   width: 25%;
   padding: 0 10px;
-  height:350px;
+  height:400px;
 }
 .row {
     width:90%;
@@ -41,6 +41,8 @@ body {
   padding: 16px;
   text-align: center;
   background-color: #f1f1f1;
+  height:inherit;
+  
 }
 div.table-title {
    display: block;
@@ -176,7 +178,6 @@ td.text-right {
   text-align: right;
 }
 
-}
 </style>
 <head>
     <meta charset="UTF-8">
@@ -196,14 +197,14 @@ td.text-right {
     <!-- Header -->
     <div class="allcontain">
         <div class="header">
-            <ul class="socialicon">
+            <ul class="socialicon" style="float:left">
                 <li><a href="#"><i class="fa fa-facebook"></i></a></li>
                 <li><a href="#"><i class="fa fa-twitter"></i></a></li>
                 <li><a href="#"><i class="fa fa-google-plus"></i></a></li>
                 <li><a href="#"><i class="fa fa-pinterest"></i></a></li>
             </ul>
             <ul class="givusacall">
-                <li>Give us a call : 0320-3070777 </li>
+                <li >Give us a call : 0320-3070777 </li>
             </ul>
         </div>
         <!-- Navbar Up -->
@@ -238,15 +239,29 @@ td.text-right {
     }
     @foreach(var item in Model)
     {
+        var base64="";
+        var imgsrc = "";
+        if (item.Image != null)
+        {
+            base64 = Convert.ToBase64String(item.Image);
+            imgsrc = string.Format("data:image/gif;base64,{0}", base64);
+        }
         if (i % 4 == 0)
         {
             @:<div class="row">
         }
         @:<div class='column'>
             @:<div class='card'>
-                @:<h1>@Html.DisplayFor(modelItem => item.Make) @Html.DisplayFor(modelItem => item.Model)</h1><br />
-                @:<h2>@Html.DisplayFor(modelItem => item.Year)</h2><br />
-                @:<h2>@Html.DisplayFor(modelItem => item.CC)</h2>
+            @:<p style="font-family: verdana; font-size:170%;"><b>@Html.DisplayFor(modelItem => item.Make) @Html.DisplayFor(modelItem => item.Model)</b></p><hr style="border:1px solid black;" />
+            if (item.Image != null) {
+                @: <img src="@imgsrc" style="width:100%; height:55%;" /><hr style="border:1px solid black;" />
+                }
+            else
+            {
+                @: <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/6c/No_image_3x4.svg/1280px-No_image_3x4.svg.png" style="width:300px; height:200px;" /><hr style="border:1px solid black;"/>
+            }
+                @:<p style="font-family: courier; font-size:110%; float:left;padding-left: 25px;">Year: @Html.DisplayFor(modelItem => item.Year)</p>
+                @:<p style="font-family: courier; font-size:110%; float: right; padding-right: 25px;">CC: @Html.DisplayFor(modelItem => item.CC)</p>
             @:</div>
          @:</div>
         if (i % 4 == 3)

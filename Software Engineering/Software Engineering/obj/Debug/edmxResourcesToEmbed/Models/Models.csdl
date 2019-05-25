@@ -25,6 +25,7 @@
     <NavigationProperty Name="Customer" Relationship="Self.FK_Cars_ToCustomers" FromRole="Cars" ToRole="Customers" />
     <NavigationProperty Name="Insurance" Relationship="Self.FK_Cars_ToInsurance" FromRole="Cars" ToRole="Insurance" />
     <NavigationProperty Name="Tracker" Relationship="Self.FK_Cars_ToTracker" FromRole="Cars" ToRole="Tracker" />
+    <Property Name="Image" Type="Binary" MaxLength="Max" FixedLength="false" />
   </EntityType>
   <EntityType Name="Customer">
     <Key>

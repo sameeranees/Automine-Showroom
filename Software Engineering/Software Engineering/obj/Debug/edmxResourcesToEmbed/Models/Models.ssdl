@@ -4,7 +4,7 @@
     <Key>
       <PropertyRef Name="Id" />
     </Key>
-    <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="Model" Type="nchar" MaxLength="15" Nullable="false" />
     <Property Name="Make" Type="nchar" MaxLength="15" Nullable="false" />
     <Property Name="Mileage" Type="int" />
@@ -22,12 +22,13 @@
     <Property Name="customerId" Type="int" />
     <Property Name="trackerId" Type="int" />
     <Property Name="insuranceId" Type="int" />
+    <Property Name="Image" Type="varbinary(max)" />
   </EntityType>
   <EntityType Name="Customers">
     <Key>
       <PropertyRef Name="Id" />
     </Key>
-    <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="Name" Type="nchar" MaxLength="40" Nullable="false" />
     <Property Name="Cnic" Type="nchar" MaxLength="13" Nullable="false" />
     <Property Name="phoneNumber" Type="nchar" MaxLength="14" Nullable="false" />
@@ -37,7 +38,7 @@
     <Key>
       <PropertyRef Name="Id" />
     </Key>
-    <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="Company" Type="nchar" MaxLength="20" Nullable="false" />
     <Property Name="Package" Type="int" Nullable="false" />
   </EntityType>
@@ -45,7 +46,7 @@
     <Key>
       <PropertyRef Name="Id" />
     </Key>
-    <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="Company" Type="nchar" MaxLength="20" Nullable="false" />
     <Property Name="Package" Type="int" Nullable="false" />
   </EntityType>

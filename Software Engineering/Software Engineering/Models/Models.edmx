@@ -4,12 +4,12 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="Software_EngineeringModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="Software_EngineeringModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Cars">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
-          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Model" Type="nchar" MaxLength="15" Nullable="false" />
           <Property Name="Make" Type="nchar" MaxLength="15" Nullable="false" />
           <Property Name="Mileage" Type="int" />
@@ -27,12 +27,13 @@
           <Property Name="customerId" Type="int" />
           <Property Name="trackerId" Type="int" />
           <Property Name="insuranceId" Type="int" />
+          <Property Name="Image" Type="varbinary(max)" />
         </EntityType>
         <EntityType Name="Customers">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
-          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Name" Type="nchar" MaxLength="40" Nullable="false" />
           <Property Name="Cnic" Type="nchar" MaxLength="13" Nullable="false" />
           <Property Name="phoneNumber" Type="nchar" MaxLength="14" Nullable="false" />
@@ -42,7 +43,7 @@
           <Key>
             <PropertyRef Name="Id" />
           </Key>
-          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Company" Type="nchar" MaxLength="20" Nullable="false" />
           <Property Name="Package" Type="int" Nullable="false" />
         </EntityType>
@@ -50,7 +51,7 @@
           <Key>
             <PropertyRef Name="Id" />
           </Key>
-          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Company" Type="nchar" MaxLength="20" Nullable="false" />
           <Property Name="Package" Type="int" Nullable="false" />
         </EntityType>
@@ -108,8 +109,7 @@
             <End Role="Cars" EntitySet="Cars" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="Software_EngineeringModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -138,6 +138,7 @@
           <NavigationProperty Name="Customer" Relationship="Self.FK_Cars_ToCustomers" FromRole="Cars" ToRole="Customers" />
           <NavigationProperty Name="Insurance" Relationship="Self.FK_Cars_ToInsurance" FromRole="Cars" ToRole="Insurance" />
           <NavigationProperty Name="Tracker" Relationship="Self.FK_Cars_ToTracker" FromRole="Cars" ToRole="Tracker" />
+          <Property Name="Image" Type="Binary" MaxLength="Max" FixedLength="false" />
         </EntityType>
         <EntityType Name="Customer">
           <Key>
@@ -231,6 +232,7 @@
           <EntitySetMapping Name="Cars">
             <EntityTypeMapping TypeName="Software_EngineeringModel.Car">
               <MappingFragment StoreEntitySet="Cars">
+                <ScalarProperty Name="Image" ColumnName="Image" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="Model" ColumnName="Model" />
                 <ScalarProperty Name="Make" ColumnName="Make" />

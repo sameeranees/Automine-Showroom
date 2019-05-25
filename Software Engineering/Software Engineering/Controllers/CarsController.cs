@@ -134,8 +134,13 @@ namespace Software_Engineering.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         [Authorize(Roles = "Admin,Finance Manager, Manager")]
-        public ActionResult Create([Bind(Include = "Model,Make,Mileage,Year,CC,buyingPrice,sellingPrice,maintainanceCost,Condition,Imported,ownerName,purchasedDate,soldDate,registerationNo,customerId,trackerId,InsuranceId")] Car car)
+        public ActionResult Create([Bind(Include = "Model,Make,Mileage,Year,CC,buyingPrice,sellingPrice,maintainanceCost,Condition,Imported,ownerName,purchasedDate,soldDate,registerationNo,customerId,trackerId,InsuranceId")] Car car,HttpPostedFileBase image1)
         {
+            if (image1 != null)
+            {
+                car.Image = new byte[image1.ContentLength];
+                image1.InputStream.Read(car.Image, 0, image1.ContentLength);
+            }
             if (ModelState.IsValid)
             {
                 //cagtegory.SecretCode = GenerateSecretCode();
@@ -189,8 +194,13 @@ namespace Software_Engineering.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         [Authorize(Roles = "Admin,Finance Manager, Manager")]
-        public ActionResult Edit([Bind(Include = "Id,Model,Make,Mileage,Year,CC,buyingPrice,sellingPrice,maintainanceCost,Condition,Imported,ownerName,purchasedDate,soldDate,registerationNo,customerId,trackerId,InsuranceId")] Car car)
+        public ActionResult Edit(Car car,HttpPostedFileBase image1)
         {
+            if (image1 != null)
+            {
+                car.Image = new byte[image1.ContentLength];
+                image1.InputStream.Read(car.Image, 0, image1.ContentLength);
+            }
             if (ModelState.IsValid)
             {
                 db.Entry(car).State = EntityState.Modified;
