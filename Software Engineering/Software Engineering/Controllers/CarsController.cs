@@ -134,7 +134,7 @@ namespace Software_Engineering.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         [Authorize(Roles = "Admin,Finance Manager, Manager")]
-        public ActionResult Create([Bind(Include = "Model,Make,Mileage,Year,CC,buyingPrice,sellingPrice,maintainanceCost,Condition,Imported,ownerName,purchasedDate,soldDate,registerationNo,customerId,trackerId,InsuranceId")] Car car,HttpPostedFileBase image1)
+        public ActionResult Create(Car car,HttpPostedFileBase image1)
         {
             if (image1 != null)
             {
