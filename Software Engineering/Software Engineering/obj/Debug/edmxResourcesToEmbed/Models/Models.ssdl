@@ -23,6 +23,9 @@
     <Property Name="trackerId" Type="int" />
     <Property Name="insuranceId" Type="int" />
     <Property Name="Image" Type="varbinary(max)" />
+    <Property Name="Image2" Type="varbinary(max)" />
+    <Property Name="Image3" Type="varbinary(max)" />
+    <Property Name="Image4" Type="varbinary(max)" />
   </EntityType>
   <EntityType Name="Customers">
     <Key>

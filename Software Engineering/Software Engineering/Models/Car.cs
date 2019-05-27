@@ -44,6 +44,9 @@ namespace Software_Engineering.Models
         public Nullable<int> trackerId { get; set; }
         public Nullable<int> insuranceId { get; set; }
         public byte[] Image { get; set; }
+        public byte[] Image2 { get; set; }
+        public byte[] Image3 { get; set; }
+        public byte[] Image4 { get; set; }
         public virtual Customer Customer { get; set; }
         public virtual Insurance Insurance { get; set; }
         public virtual Tracker Tracker { get; set; }
@@ -57,4 +60,3 @@ namespace Software_Engineering.Models
     }
 
 }
-

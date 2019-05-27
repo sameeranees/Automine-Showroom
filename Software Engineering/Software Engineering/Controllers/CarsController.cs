@@ -15,6 +15,10 @@ namespace Software_Engineering.Controllers
     {
         Software_EngineeringEntities1 db = new Software_EngineeringEntities1();
         // GET: Cars
+        public bool isModified1 = false;
+        public bool isModified2 = false;
+        public bool isModified3 = false;
+        public bool isModified4 = false;
         [Authorize(Roles = "Admin,Finance Manager, Manager")]
         public ActionResult Index()
         {
@@ -134,12 +138,27 @@ namespace Software_Engineering.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         [Authorize(Roles = "Admin,Finance Manager, Manager")]
-        public ActionResult Create(Car car,HttpPostedFileBase image1)
+        public ActionResult Create(Car car,HttpPostedFileBase image1, HttpPostedFileBase image2, HttpPostedFileBase image3, HttpPostedFileBase image4)
         {
             if (image1 != null)
             {
                 car.Image = new byte[image1.ContentLength];
                 image1.InputStream.Read(car.Image, 0, image1.ContentLength);
+            }
+            if (image2 != null)
+            {
+                car.Image2 = new byte[image2.ContentLength];
+                image2.InputStream.Read(car.Image2, 0, image2.ContentLength);
+            }
+            if (image3 != null)
+            {
+                car.Image3 = new byte[image3.ContentLength];
+                image3.InputStream.Read(car.Image3, 0, image3.ContentLength);
+            }
+            if (image4 != null)
+            {
+                car.Image4 = new byte[image4.ContentLength];
+                image4.InputStream.Read(car.Image4, 0, image4.ContentLength);
             }
             if (ModelState.IsValid)
             {
@@ -189,17 +208,64 @@ namespace Software_Engineering.Controllers
             ViewBag.insuranceId = new SelectList(db.Insurances, "Id", "Company", car.insuranceId);
             return View(car);
         }
-
+        
         // POST: Cars/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
         [Authorize(Roles = "Admin,Finance Manager, Manager")]
-        public ActionResult Edit(Car car,HttpPostedFileBase image1)
+        public ActionResult Edit([Bind(Exclude = "image1,image2,image3,image4,modified1,modified2,modified3,modified4")]Car car,HttpPostedFileBase image1, HttpPostedFileBase image2, HttpPostedFileBase image3, HttpPostedFileBase image4,bool modified1, bool modified2, bool modified3, bool modified4)
         {
             if (image1 != null)
             {
                 car.Image = new byte[image1.ContentLength];
                 image1.InputStream.Read(car.Image, 0, image1.ContentLength);
+            }
+            if (image2 != null)
+            {
+                car.Image2 = new byte[image2.ContentLength];
+                image2.InputStream.Read(car.Image2, 0, image2.ContentLength);
+            }
+            if (image3 != null)
+            {
+                car.Image3 = new byte[image3.ContentLength];
+                image3.InputStream.Read(car.Image3, 0, image3.ContentLength);
+            }
+            if (image4 != null)
+            {
+                car.Image4 = new byte[image4.ContentLength];
+                image4.InputStream.Read(car.Image4, 0, image4.ContentLength);
+            }
+            if (image1 == null)
+            {
+                car.Image = db.Cars.Where(i => i.Id == car.Id).Select(i => i.Image).ToList()[0];
+            }
+            if (image2 == null)
+            {
+                car.Image2 = db.Cars.Where(i => i.Id == car.Id).Select(i => i.Image2).ToList()[0];
+            }
+            if (image3 == null)
+            {
+                car.Image3 = db.Cars.Where(i => i.Id == car.Id).Select(i => i.Image3).ToList()[0];
+            }
+            if (image4 == null)
+            {
+                car.Image4 = db.Cars.Where(i => i.Id == car.Id).Select(i => i.Image4).ToList()[0];
+            }
+            if (modified1 == true)
+            {
+                car.Image = null;
+            }
+            if (modified2 == true)
+            {
+                car.Image2 = null;
+            }
+            if (modified3 == true)
+            {
+                car.Image3 = null;
+            }
+            if (modified4 == true)
+            {
+                car.Image4 = null;
             }
             if (ModelState.IsValid)
             {

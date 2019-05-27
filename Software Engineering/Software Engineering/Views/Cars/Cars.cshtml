@@ -335,7 +335,7 @@
 <body style="background-color:#8a8787">
     <!-- Header -->
     <div class="allcontain">
-        <div class="header">
+        <div class="header" style="text-align:left;">
             <ul class="socialicon" style="float:left">
                 <li><a href="#"><i class="fa fa-facebook"></i></a></li>
                 <li><a href="#"><i class="fa fa-twitter"></i></a></li>
@@ -380,15 +380,29 @@
         @foreach (var item in Model)
         {
             var base64 = "";
-            var imgsrc = "";
+            var imgsrc = "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6c/No_image_3x4.svg/1280px-No_image_3x4.svg.png";
+            var imgsrc2 = "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6c/No_image_3x4.svg/1280px-No_image_3x4.svg.png";
+            var imgsrc3 = "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6c/No_image_3x4.svg/1280px-No_image_3x4.svg.png";
+            var imgsrc4 = "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6c/No_image_3x4.svg/1280px-No_image_3x4.svg.png";
             if (item.Image != null)
             {
                 base64 = Convert.ToBase64String(item.Image);
                 imgsrc = string.Format("data:image/gif;base64,{0}", base64);
             }
-            if (item.Image == null)
+            if (item.Image2 != null)
             {
-                imgsrc = "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6c/No_image_3x4.svg/1280px-No_image_3x4.svg.png";
+                base64 = Convert.ToBase64String(item.Image2);
+                imgsrc2 = string.Format("data:image/gif;base64,{0}", base64);
+            }
+            if (item.Image3 != null)
+            {
+                base64 = Convert.ToBase64String(item.Image3);
+                imgsrc3 = string.Format("data:image/gif;base64,{0}", base64);
+            }
+            if (item.Image4 != null)
+            {
+                base64 = Convert.ToBase64String(item.Image4);
+                imgsrc4 = string.Format("data:image/gif;base64,{0}", base64);
             }
             if (i % 4 == 0)
             {
@@ -419,17 +433,17 @@
 
                         <div class="mySlides">
                             <div class="numbertext">2 / 4</div>
-                            <img src="@imgsrc" style="width:100%">
+                            <img src="@imgsrc2" style="width:100%">
                         </div>
 
                         <div class="mySlides">
                             <div class="numbertext">3 / 4</div>
-                            <img src="@imgsrc" style="width:100%">
+                            <img src="@imgsrc3" style="width:100%">
                         </div>
 
                         <div class="mySlides">
                             <div class="numbertext">4 / 4</div>
-                            <img src="@imgsrc" style="width:100%">
+                            <img src="@imgsrc4" style="width:100%">
                         </div>
 
                         <a class="prev" onclick="plusSlides(-1)" style="color: black;">&#10094;</a>
@@ -444,13 +458,13 @@
                             <img class="demo cursor" src="@imgsrc" style="width:100%" onclick="currentSlide((@modelid*4)-3)" alt="@item.Model">
                         </div>
                         <div class="column">
-                            <img class="demo cursor" src="@imgsrc" style="width:100%" onclick="currentSlide((@modelid*4)-2)" alt="@item.Model">
+                            <img class="demo cursor" src="@imgsrc2" style="width:100%" onclick="currentSlide((@modelid*4)-2)" alt="@item.Model">
                         </div>
                         <div class="column">
-                            <img class="demo cursor" src="@imgsrc" style="width:100%" onclick="currentSlide((@modelid*4)-1)" alt="@item.Model">
+                            <img class="demo cursor" src="@imgsrc3" style="width:100%" onclick="currentSlide((@modelid*4)-1)" alt="@item.Model">
                         </div>
                         <div class="column">
-                            <img class="demo cursor" src="@imgsrc" style="width:100%" onclick="currentSlide((@modelid*4))" alt="@item.Model">
+                            <img class="demo cursor" src="@imgsrc4" style="width:100%" onclick="currentSlide((@modelid*4))" alt="@item.Model">
                         </div>
                     </div>
                 </div>

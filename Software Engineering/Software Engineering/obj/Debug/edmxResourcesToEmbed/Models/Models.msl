@@ -4,6 +4,9 @@
     <EntitySetMapping Name="Cars">
       <EntityTypeMapping TypeName="Software_EngineeringModel.Car">
         <MappingFragment StoreEntitySet="Cars">
+          <ScalarProperty Name="Image4" ColumnName="Image4" />
+          <ScalarProperty Name="Image3" ColumnName="Image3" />
+          <ScalarProperty Name="Image2" ColumnName="Image2" />
           <ScalarProperty Name="Image" ColumnName="Image" />
           <ScalarProperty Name="Id" ColumnName="Id" />
           <ScalarProperty Name="Model" ColumnName="Model" />

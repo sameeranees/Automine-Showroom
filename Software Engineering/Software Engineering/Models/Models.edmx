@@ -28,6 +28,9 @@
           <Property Name="trackerId" Type="int" />
           <Property Name="insuranceId" Type="int" />
           <Property Name="Image" Type="varbinary(max)" />
+          <Property Name="Image2" Type="varbinary(max)" />
+          <Property Name="Image3" Type="varbinary(max)" />
+          <Property Name="Image4" Type="varbinary(max)" />
         </EntityType>
         <EntityType Name="Customers">
           <Key>
@@ -139,6 +142,9 @@
           <NavigationProperty Name="Insurance" Relationship="Self.FK_Cars_ToInsurance" FromRole="Cars" ToRole="Insurance" />
           <NavigationProperty Name="Tracker" Relationship="Self.FK_Cars_ToTracker" FromRole="Cars" ToRole="Tracker" />
           <Property Name="Image" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="Image2" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="Image3" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="Image4" Type="Binary" MaxLength="Max" FixedLength="false" />
         </EntityType>
         <EntityType Name="Customer">
           <Key>
@@ -232,6 +238,9 @@
           <EntitySetMapping Name="Cars">
             <EntityTypeMapping TypeName="Software_EngineeringModel.Car">
               <MappingFragment StoreEntitySet="Cars">
+                <ScalarProperty Name="Image4" ColumnName="Image4" />
+                <ScalarProperty Name="Image3" ColumnName="Image3" />
+                <ScalarProperty Name="Image2" ColumnName="Image2" />
                 <ScalarProperty Name="Image" ColumnName="Image" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="Model" ColumnName="Model" />
