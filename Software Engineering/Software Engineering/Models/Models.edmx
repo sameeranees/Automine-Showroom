@@ -31,6 +31,17 @@
           <Property Name="Image2" Type="varbinary(max)" />
           <Property Name="Image3" Type="varbinary(max)" />
           <Property Name="Image4" Type="varbinary(max)" />
+          <Property Name="insExpiry" Type="date" />
+          <Property Name="traExpiry" Type="date" />
+        </EntityType>
+        <EntityType Name="Closings">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Month" Type="int" Nullable="false" />
+          <Property Name="Year" Type="int" Nullable="false" />
+          <Property Name="ClosingBalance" Type="bigint" />
         </EntityType>
         <EntityType Name="Customers">
           <Key>
@@ -96,6 +107,7 @@
         </Association>
         <EntityContainer Name="Software_EngineeringModelStoreContainer">
           <EntitySet Name="Cars" EntityType="Self.Cars" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Closings" EntityType="Self.Closings" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Customers" EntityType="Self.Customers" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Insurance" EntityType="Self.Insurance" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Tracker" EntityType="Self.Tracker" Schema="dbo" store:Type="Tables" />
@@ -145,6 +157,8 @@
           <Property Name="Image2" Type="Binary" MaxLength="Max" FixedLength="false" />
           <Property Name="Image3" Type="Binary" MaxLength="Max" FixedLength="false" />
           <Property Name="Image4" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="insExpiry" Type="DateTime" Precision="0" />
+          <Property Name="traExpiry" Type="DateTime" Precision="0" />
         </EntityType>
         <EntityType Name="Customer">
           <Key>
@@ -228,7 +242,17 @@
             <End Role="Tracker" EntitySet="Trackers" />
             <End Role="Cars" EntitySet="Cars" />
           </AssociationSet>
+          <EntitySet Name="Closings" EntityType="Software_EngineeringModel.Closing" />
         </EntityContainer>
+        <EntityType Name="Closing">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Month" Type="Int32" Nullable="false" />
+          <Property Name="Year" Type="Int32" Nullable="false" />
+          <Property Name="ClosingBalance" Type="Int64" />
+        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -238,6 +262,8 @@
           <EntitySetMapping Name="Cars">
             <EntityTypeMapping TypeName="Software_EngineeringModel.Car">
               <MappingFragment StoreEntitySet="Cars">
+                <ScalarProperty Name="traExpiry" ColumnName="traExpiry" />
+                <ScalarProperty Name="insExpiry" ColumnName="insExpiry" />
                 <ScalarProperty Name="Image4" ColumnName="Image4" />
                 <ScalarProperty Name="Image3" ColumnName="Image3" />
                 <ScalarProperty Name="Image2" ColumnName="Image2" />
@@ -289,6 +315,16 @@
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="Company" ColumnName="Company" />
                 <ScalarProperty Name="Package" ColumnName="Package" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Closings">
+            <EntityTypeMapping TypeName="Software_EngineeringModel.Closing">
+              <MappingFragment StoreEntitySet="Closings">
+                <ScalarProperty Name="ClosingBalance" ColumnName="ClosingBalance" />
+                <ScalarProperty Name="Year" ColumnName="Year" />
+                <ScalarProperty Name="Month" ColumnName="Month" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

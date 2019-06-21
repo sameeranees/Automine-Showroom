@@ -43,6 +43,8 @@ namespace Software_Engineering.Models
         public Nullable<int> customerId { get; set; }
         public Nullable<int> trackerId { get; set; }
         public Nullable<int> insuranceId { get; set; }
+        public Nullable<System.DateTime> insExpiry { get; set; }
+        public Nullable<System.DateTime> traExpiry { get; set; }
         public byte[] Image { get; set; }
         public byte[] Image2 { get; set; }
         public byte[] Image3 { get; set; }

@@ -11,8 +11,7 @@ namespace Software_Engineering.Models
 {
     using System;
     using System.Collections.Generic;
-    using System.ComponentModel;
-
+    
     public partial class Customer
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -20,15 +19,13 @@ namespace Software_Engineering.Models
         {
             this.Cars = new HashSet<Car>();
         }
-
+    
         public int Id { get; set; }
         public string Name { get; set; }
-        [DisplayName("CNIC")]
         public string Cnic { get; set; }
-        [DisplayName("Phone Number")]
         public string phoneNumber { get; set; }
         public string Address { get; set; }
-
+    
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Car> Cars { get; set; }
     }

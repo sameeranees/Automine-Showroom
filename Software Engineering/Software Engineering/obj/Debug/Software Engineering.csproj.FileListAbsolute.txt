@@ -79,7 +79,7 @@ C:\Users\samee\Source\Repos\Soft_Eng\Software Engineering\Software Engineering\b
 C:\Users\samee\Source\Repos\Soft_Eng\Software Engineering\Software Engineering\bin\Microsoft.Owin.Security.MicrosoftAccount.xml
 C:\Users\samee\Source\Repos\Soft_Eng\Software Engineering\Software Engineering\obj\Debug\Software Engineering.dll
 C:\Users\samee\Source\Repos\Soft_Eng\Software Engineering\Software Engineering\obj\Debug\Software Engineering.pdb
-C:\Users\samee\Source\Repos\Soft_Eng\Software Engineering\Software Engineering\obj\Debug\Software Engineering.csprojResolveAssemblyReference.cache
 C:\Users\samee\Source\Repos\Soft_Eng\Software Engineering\Software Engineering\bin\Microsoft.ReportViewer.WebForms.dll
 C:\Users\samee\Source\Repos\Soft_Eng\Software Engineering\Software Engineering\obj\Debug\RdlCompile.cache
 C:\Users\samee\Source\Repos\Soft_Eng\Software Engineering\Software Engineering\obj\Debug\RdlCompile.compiled
+C:\Users\samee\Source\Repos\Soft_Eng\Software Engineering\Software Engineering\obj\Debug\Software Engineering.csprojResolveAssemblyReference.cache

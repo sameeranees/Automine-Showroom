@@ -12,6 +12,7 @@
         <AssociationConnector Association="Software_EngineeringModel.FK_Cars_ToCustomers" ManuallyRouted="false" />
         <AssociationConnector Association="Software_EngineeringModel.FK_Cars_ToInsurance" ManuallyRouted="false" />
         <AssociationConnector Association="Software_EngineeringModel.FK_Cars_ToTracker" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="Software_EngineeringModel.Closing" Width="1.5" PointX="5.375" PointY="0.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

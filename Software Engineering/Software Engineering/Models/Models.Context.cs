@@ -29,5 +29,6 @@ namespace Software_Engineering.Models
         public virtual DbSet<Customer> Customers { get; set; }
         public virtual DbSet<Insurance> Insurances { get; set; }
         public virtual DbSet<Tracker> Trackers { get; set; }
+        public virtual DbSet<Closing> Closings { get; set; }
     }
 }

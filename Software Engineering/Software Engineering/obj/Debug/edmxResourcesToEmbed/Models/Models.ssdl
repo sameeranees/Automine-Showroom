@@ -26,6 +26,17 @@
     <Property Name="Image2" Type="varbinary(max)" />
     <Property Name="Image3" Type="varbinary(max)" />
     <Property Name="Image4" Type="varbinary(max)" />
+    <Property Name="insExpiry" Type="date" />
+    <Property Name="traExpiry" Type="date" />
+  </EntityType>
+  <EntityType Name="Closings">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Month" Type="int" Nullable="false" />
+    <Property Name="Year" Type="int" Nullable="false" />
+    <Property Name="ClosingBalance" Type="bigint" />
   </EntityType>
   <EntityType Name="Customers">
     <Key>
@@ -91,6 +102,7 @@
   </Association>
   <EntityContainer Name="Software_EngineeringModelStoreContainer">
     <EntitySet Name="Cars" EntityType="Self.Cars" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Closings" EntityType="Self.Closings" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Customers" EntityType="Self.Customers" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Insurance" EntityType="Self.Insurance" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Tracker" EntityType="Self.Tracker" Schema="dbo" store:Type="Tables" />

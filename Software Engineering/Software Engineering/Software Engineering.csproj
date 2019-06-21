@@ -200,6 +200,7 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\CarsController.cs" />
+    <Compile Include="Controllers\ClosingController.cs" />
     <Compile Include="Controllers\CustomerController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\InsuranceController.cs" />
@@ -213,6 +214,9 @@
     </Compile>
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Car.cs">
+      <DependentUpon>Models.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Closing.cs">
       <DependentUpon>Models.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Customer.cs">
@@ -251,6 +255,11 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Software_EngineeringDataSet1.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Software_EngineeringDataSet2.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Software_EngineeringDataSet2.xsd</DependentUpon>
     </Compile>
     <Compile Include="Startup.cs" />
   </ItemGroup>
@@ -491,6 +500,21 @@
     <Content Include="Views\Customer\Delete.cshtml" />
     <Content Include="Views\Insurance\Delete.cshtml" />
     <Content Include="Views\Tracker\Delete.cshtml" />
+    <Content Include="Views\Closing\Create.cshtml" />
+    <Content Include="Software_EngineeringDataSet2.xsc">
+      <DependentUpon>Software_EngineeringDataSet2.xsd</DependentUpon>
+    </Content>
+    <None Include="Software_EngineeringDataSet2.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>Software_EngineeringDataSet2.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <Content Include="Software_EngineeringDataSet2.xss">
+      <DependentUpon>Software_EngineeringDataSet2.xsd</DependentUpon>
+    </Content>
+    <Content Include="Views\Cars\Renew_List.cshtml" />
+    <Content Include="Views\Cars\RenewInsurance.cshtml" />
+    <Content Include="Views\Cars\RenewTracker.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="admin-lte\plugins\" />

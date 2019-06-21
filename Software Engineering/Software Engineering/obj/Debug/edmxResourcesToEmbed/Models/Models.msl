@@ -4,6 +4,8 @@
     <EntitySetMapping Name="Cars">
       <EntityTypeMapping TypeName="Software_EngineeringModel.Car">
         <MappingFragment StoreEntitySet="Cars">
+          <ScalarProperty Name="traExpiry" ColumnName="traExpiry" />
+          <ScalarProperty Name="insExpiry" ColumnName="insExpiry" />
           <ScalarProperty Name="Image4" ColumnName="Image4" />
           <ScalarProperty Name="Image3" ColumnName="Image3" />
           <ScalarProperty Name="Image2" ColumnName="Image2" />
@@ -55,6 +57,16 @@
           <ScalarProperty Name="Id" ColumnName="Id" />
           <ScalarProperty Name="Company" ColumnName="Company" />
           <ScalarProperty Name="Package" ColumnName="Package" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Closings">
+      <EntityTypeMapping TypeName="Software_EngineeringModel.Closing">
+        <MappingFragment StoreEntitySet="Closings">
+          <ScalarProperty Name="ClosingBalance" ColumnName="ClosingBalance" />
+          <ScalarProperty Name="Year" ColumnName="Year" />
+          <ScalarProperty Name="Month" ColumnName="Month" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

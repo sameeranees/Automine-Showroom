@@ -25,7 +25,7 @@ namespace Software_Engineering.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         [Authorize(Roles = "Finance Manager")]
-        public ActionResult Report([Bind(Include ="Month")] Car cars)
+        public ActionResult Report([Bind(Include ="Month")] Car cars, string years)
         {
             int B=0;
             if (cars.Month == null)
@@ -74,7 +74,7 @@ namespace Software_Engineering.Controllers
                     B = 0;
                     return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            
+            int C = Convert.ToInt16(years);
             LocalReport localreport = new LocalReport();
             localreport.ReportPath = Server.MapPath("~/Report/Rdlc/Total.rdlc");
 
@@ -82,6 +82,16 @@ namespace Software_Engineering.Controllers
             reportdatasource.Name = "DataSet1";
             reportdatasource.Value = db.Cars.Where(q => q.soldDate.Value.Month== B).ToList();
             localreport.DataSources.Add(reportdatasource);
+
+            ReportDataSource reportdatasource2 = new ReportDataSource();
+            reportdatasource2.Name = "DataSet2";
+            reportdatasource2.Value = db.Closings.Where(q=>q.Month==B-1 && q.Year==C).ToList();
+            localreport.DataSources.Add(reportdatasource2);
+
+            ReportDataSource reportdatasource3 = new ReportDataSource();
+            reportdatasource3.Name = "DataSet3";
+            reportdatasource3.Value = db.Closings.Where(q=>q.Month == B && q.Year==C).ToList();
+            localreport.DataSources.Add(reportdatasource3);
 
             string reportType = "PDF";
             string mimeType;

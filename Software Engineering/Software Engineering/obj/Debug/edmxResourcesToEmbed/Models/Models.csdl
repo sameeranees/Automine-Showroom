@@ -29,6 +29,8 @@
     <Property Name="Image2" Type="Binary" MaxLength="Max" FixedLength="false" />
     <Property Name="Image3" Type="Binary" MaxLength="Max" FixedLength="false" />
     <Property Name="Image4" Type="Binary" MaxLength="Max" FixedLength="false" />
+    <Property Name="insExpiry" Type="DateTime" Precision="0" />
+    <Property Name="traExpiry" Type="DateTime" Precision="0" />
   </EntityType>
   <EntityType Name="Customer">
     <Key>
@@ -112,5 +114,15 @@
       <End Role="Tracker" EntitySet="Trackers" />
       <End Role="Cars" EntitySet="Cars" />
     </AssociationSet>
+    <EntitySet Name="Closings" EntityType="Software_EngineeringModel.Closing" />
   </EntityContainer>
+  <EntityType Name="Closing">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Month" Type="Int32" Nullable="false" />
+    <Property Name="Year" Type="Int32" Nullable="false" />
+    <Property Name="ClosingBalance" Type="Int64" />
+  </EntityType>
 </Schema>
