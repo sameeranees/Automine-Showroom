@@ -1,0 +1,175 @@
+﻿@model Software_Engineering.Models.ViewModel
+
+@{
+    ViewBag.Title = "Renew";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="row">
+    <div class="col-xs-12">
+        <div class="box">
+            <div class="box-header">
+                <h3 class="box-title">Expiring Insurances</h3>
+            </div>
+            <!-- /.box-header -->
+            <div class="box-body">
+                <table id="example2" class="table table-bordered table-hover">
+                    <thead>
+                        <tr>
+                            <th>
+                                Model
+                            </th>
+                            <th>
+                                Make
+                            </th>
+                            <th>
+                                Year
+                            </th>
+                            <th>
+                                CC
+                            </th>
+                            <th>
+                                Customer Name
+                            </th>
+                            <th>
+                                Insurance Company
+                            </th>
+                            <th>
+                                Expiry Date
+                            </th>
+                            <th>
+                                Customer Phone
+                            </th>
+                            <th>
+                                Customer Address
+                            </th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model.Sold)
+                        {
+                            <tr>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Model)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Make)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Year)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.CC)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Customer.Name)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Insurance.Company)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.insExpiry)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Customer.phoneNumber)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Customer.Address)
+                                </td>
+                                <td>
+                                    @Html.ActionLink("Renew", "RenewInsurance", new { id = item.Id })
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="row">
+    <div class="col-xs-12">
+        <div class="box">
+            <div class="box-header">
+                <h3 class="box-title">Expiring Trackers</h3>
+            </div>
+            <!-- /.box-header -->
+            <div class="box-body">
+                <table id="example2" class="table table-bordered table-hover">
+                    <thead>
+                        <tr>
+                            <th>
+                                Model
+                            </th>
+                            <th>
+                                Make
+                            </th>
+                            <th>
+                                Year
+                            </th>
+                            <th>
+                                CC
+                            </th>
+                            <th>
+                                Customer Name
+                            </th>
+                            <th>
+                                Tracker Company
+                            </th>
+                            <th>
+                                Expiry Date
+                            </th>
+                            <th>
+                                Customer Phone
+                            </th>
+                            <th>
+                                Customer Address
+                            </th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model.UnSold)
+                        {
+                            <tr>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Model)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Make)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Year)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.CC)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Customer.Name)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Tracker.Company)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.traExpiry)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Customer.phoneNumber)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Customer.Address)
+                                </td>
+                                <td>
+                                    @Html.ActionLink("Renew", "RenewTracker", new { id = item.Id })
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

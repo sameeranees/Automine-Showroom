@@ -1,0 +1,74 @@
+﻿@{
+    Layout = null;
+}
+@Styles.Render("~/Content/other.css")
+@Styles.Render("~/Content/other 2.css")
+@Styles.Render("~/Content/other 3.css")
+@Scripts.Render("~/bundles/modernizr")
+@model Software_Engineering.Models.RegisterViewModel
+@{
+    ViewBag.Title = "Register";
+}
+
+<body>
+    <div class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <b class="navbar-brand" style="text-align:center">AUTOMINE</b>
+            </div>
+        </div>
+    </div>
+</body>
+<div class="container body-content">
+    <h2>@ViewBag.Title.</h2>
+    <div class="row">
+        <div class="col-md-8">
+                @using (Html.BeginForm("Register", "Account", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+                {
+                    @Html.AntiForgeryToken()
+                    <h4>Create a new account.</h4>
+                    <hr />
+                    @Html.ValidationSummary("", new { @class = "text-danger" })
+                    <div class="form-group">
+                        @Html.LabelFor(m => m.Email, new { @class = "col-md-2 control-label" })
+                        <div class="col-md-10">
+                            @Html.TextBoxFor(m => m.Email, new { @class = "form-control" })
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        @Html.LabelFor(m => m.Password, new { @class = "col-md-2 control-label" })
+                        <div class="col-md-10">
+                            @Html.PasswordFor(m => m.Password, new { @class = "form-control" })
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        @Html.LabelFor(m => m.ConfirmPassword, new { @class = "col-md-2 control-label" })
+                        <div class="col-md-10">
+                            @Html.PasswordFor(m => m.ConfirmPassword, new { @class = "form-control" })
+                        </div>
+                    </div>
+    <!--Select the Role Type for the User-->
+                    <div class="form-group">
+                        @Html.Label("Select Your User Type", new { @class = "col-md-2 control-label" })
+                        <div class="col-md-10">
+                            @Html.DropDownList("Name", (SelectList)ViewBag.Name, "--Choose Role--")
+                        </div>
+                    </div>
+    <!--Ends Here-->
+                    <div class="form-group">
+                        <div class="col-md-offset-2 col-md-10">
+                            <input type="submit" class="btn btn-default" value="Register" />
+                        </div>
+                    </div>
+                }
+        </div>
+    </div>
+</div>
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

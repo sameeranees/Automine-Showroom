@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="70e010b685624fa1a16e40f97a43f331" Name="Diagram1">
+        <EntityTypeShape EntityType="Software_EngineeringModel.Car" Width="1.5" PointX="3" PointY="2.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="Software_EngineeringModel.Customer" Width="1.5" PointX="0.75" PointY="3.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="Software_EngineeringModel.Insurance" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Software_EngineeringModel.Tracker" Width="1.5" PointX="0.75" PointY="7.25" IsExpanded="true" />
+        <AssociationConnector Association="Software_EngineeringModel.FK_Cars_ToCustomers" ManuallyRouted="false" />
+        <AssociationConnector Association="Software_EngineeringModel.FK_Cars_ToInsurance" ManuallyRouted="false" />
+        <AssociationConnector Association="Software_EngineeringModel.FK_Cars_ToTracker" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="Software_EngineeringModel.Closing" Width="1.5" PointX="5.375" PointY="0.75" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

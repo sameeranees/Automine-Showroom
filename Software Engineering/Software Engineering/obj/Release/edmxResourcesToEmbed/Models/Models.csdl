@@ -1,0 +1,128 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="Software_EngineeringModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Car">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Model" Type="String" MaxLength="15" FixedLength="true" Unicode="true" Nullable="false" />
+    <Property Name="Make" Type="String" MaxLength="15" FixedLength="true" Unicode="true" Nullable="false" />
+    <Property Name="Mileage" Type="Int32" />
+    <Property Name="Year" Type="Int32" />
+    <Property Name="CC" Type="String" MaxLength="5" FixedLength="true" Unicode="true" />
+    <Property Name="buyingPrice" Type="Int64" Nullable="false" />
+    <Property Name="sellingPrice" Type="Int64" />
+    <Property Name="maintainanceCost" Type="Int64" />
+    <Property Name="Condition" Type="String" MaxLength="20" FixedLength="true" Unicode="true" />
+    <Property Name="Imported" Type="Boolean" Nullable="false" />
+    <Property Name="ownerName" Type="String" MaxLength="30" FixedLength="true" Unicode="true" Nullable="false" />
+    <Property Name="purchasedDate" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="soldDate" Type="DateTime" Precision="0" />
+    <Property Name="registerationNo" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+    <Property Name="customerId" Type="Int32" />
+    <Property Name="trackerId" Type="Int32" />
+    <Property Name="insuranceId" Type="Int32" />
+    <NavigationProperty Name="Customer" Relationship="Self.FK_Cars_ToCustomers" FromRole="Cars" ToRole="Customers" />
+    <NavigationProperty Name="Insurance" Relationship="Self.FK_Cars_ToInsurance" FromRole="Cars" ToRole="Insurance" />
+    <NavigationProperty Name="Tracker" Relationship="Self.FK_Cars_ToTracker" FromRole="Cars" ToRole="Tracker" />
+    <Property Name="Image" Type="Binary" MaxLength="Max" FixedLength="false" />
+    <Property Name="Image2" Type="Binary" MaxLength="Max" FixedLength="false" />
+    <Property Name="Image3" Type="Binary" MaxLength="Max" FixedLength="false" />
+    <Property Name="Image4" Type="Binary" MaxLength="Max" FixedLength="false" />
+    <Property Name="insExpiry" Type="DateTime" Precision="0" />
+    <Property Name="traExpiry" Type="DateTime" Precision="0" />
+  </EntityType>
+  <EntityType Name="Customer">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" MaxLength="40" FixedLength="true" Unicode="true" Nullable="false" />
+    <Property Name="Cnic" Type="String" MaxLength="13" FixedLength="true" Unicode="true" Nullable="false" />
+    <Property Name="phoneNumber" Type="String" MaxLength="14" FixedLength="true" Unicode="true" Nullable="false" />
+    <Property Name="Address" Type="String" MaxLength="60" FixedLength="true" Unicode="true" />
+    <NavigationProperty Name="Cars" Relationship="Self.FK_Cars_ToCustomers" FromRole="Customers" ToRole="Cars" />
+  </EntityType>
+  <EntityType Name="Insurance">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Company" Type="String" MaxLength="20" FixedLength="true" Unicode="true" Nullable="false" />
+    <Property Name="Package" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Cars" Relationship="Self.FK_Cars_ToInsurance" FromRole="Insurance" ToRole="Cars" />
+  </EntityType>
+  <EntityType Name="Tracker">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Company" Type="String" MaxLength="20" FixedLength="true" Unicode="true" Nullable="false" />
+    <Property Name="Package" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Cars" Relationship="Self.FK_Cars_ToTracker" FromRole="Tracker" ToRole="Cars" />
+  </EntityType>
+  <Association Name="FK_Cars_ToCustomers">
+    <End Role="Customers" Type="Self.Customer" Multiplicity="0..1" />
+    <End Role="Cars" Type="Self.Car" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Customers">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Cars">
+        <PropertyRef Name="customerId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Cars_ToInsurance">
+    <End Role="Insurance" Type="Self.Insurance" Multiplicity="0..1" />
+    <End Role="Cars" Type="Self.Car" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Insurance">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Cars">
+        <PropertyRef Name="insuranceId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Cars_ToTracker">
+    <End Role="Tracker" Type="Self.Tracker" Multiplicity="0..1" />
+    <End Role="Cars" Type="Self.Car" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Tracker">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Cars">
+        <PropertyRef Name="trackerId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="Software_EngineeringEntities1" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Cars" EntityType="Self.Car" />
+    <EntitySet Name="Customers" EntityType="Self.Customer" />
+    <EntitySet Name="Insurances" EntityType="Self.Insurance" />
+    <EntitySet Name="Trackers" EntityType="Self.Tracker" />
+    <AssociationSet Name="FK_Cars_ToCustomers" Association="Self.FK_Cars_ToCustomers">
+      <End Role="Customers" EntitySet="Customers" />
+      <End Role="Cars" EntitySet="Cars" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Cars_ToInsurance" Association="Self.FK_Cars_ToInsurance">
+      <End Role="Insurance" EntitySet="Insurances" />
+      <End Role="Cars" EntitySet="Cars" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Cars_ToTracker" Association="Self.FK_Cars_ToTracker">
+      <End Role="Tracker" EntitySet="Trackers" />
+      <End Role="Cars" EntitySet="Cars" />
+    </AssociationSet>
+    <EntitySet Name="Closings" EntityType="Software_EngineeringModel.Closing" />
+  </EntityContainer>
+  <EntityType Name="Closing">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Month" Type="Int32" Nullable="false" />
+    <Property Name="Year" Type="Int32" Nullable="false" />
+    <Property Name="ClosingBalance" Type="Int64" />
+  </EntityType>
+</Schema>
