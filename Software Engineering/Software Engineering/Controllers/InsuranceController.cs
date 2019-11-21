@@ -80,10 +80,13 @@ namespace Software_Engineering.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         [Authorize(Roles = "Admin,Finance Manager, Manager")]
-        public ActionResult Edit([Bind(Include = "Company,Package")] Insurance insurance)
+        public ActionResult Edit([Bind(Include = "Id,Company,Package")] Insurance insurance)
         {
             if (ModelState.IsValid)
             {
+                var card = db.Insurances.Find(insurance.Id);
+                db.Entry(card).State = EntityState.Detached;
+                insurance.Cars = card.Cars;
                 db.Entry(insurance).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
